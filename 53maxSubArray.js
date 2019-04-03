@@ -12,6 +12,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+//  本质上这是个动态规划的问题
 var maxSubArray = function(nums) {
     let res = nums[0],sum = 0;
     for(let i = 0;i<nums.length;i++){
