@@ -2,8 +2,16 @@
  * @param {number[]} deck
  * @return {boolean}
  */
-//  思路其实就是求最小公约数
+//  思路其实就是求相同数字数组数字的长度的与其最小长度的最大公因数不为1
 var hasGroupsSizeX = function (deck) {
+    let gcd = (a,b) =>{
+        while(b){
+           let t = b;
+           b = a % b;
+           a = t;    
+        } 
+        return a;
+    }
     if(deck.length<=1){
         return false
     }else{
@@ -14,7 +22,7 @@ var hasGroupsSizeX = function (deck) {
         let min = Number.MAX_SAFE_INTEGER,len = deck.length; // 当前操作系统下面最大的整数
         for (let i = 0, temp = []; i < len; i++) {
             temp.push(deck[i]);
-            for (let j = i + 1; j < len-1; j++) {
+            for (let j = i + 1; j <= len; j++) {
                 if (deck[i] === deck[j]) {
                     temp.push(deck[j]);
                 } else {
@@ -27,15 +35,17 @@ var hasGroupsSizeX = function (deck) {
                     break;
                 }
             }
-         }
+        }
+
         return dst.every(item=>{
-            if(item.length%min===0){
-                return true
+            // if(item.length%min===0&&item.length/min!==item.length){
+            //     return true
+            // }
+            if(gcd(item.length,min)!==1){
+                return true;
             }
         })
     }
 };
-console.log(hasGroupsSizeX([0,0,0,0,0,1,1,2,3,4]));
-
-
+console.log(hasGroupsSizeX([1,1]));
 
