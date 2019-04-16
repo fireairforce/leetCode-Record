@@ -1,2 +1,2 @@
-let len = 11;
-console.log(Math.ceil(11/2));
+let s = '1234'
+console.log(s.length);
