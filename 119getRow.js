@@ -2,6 +2,8 @@
  * @param {number} rowIndex
  * @return {number[]}
  */
+
+ // 根据组合数的公式去进行计算
 var getRow = function (rowIndex) {
     let arr = [],flag = 1;
     arr.push(flag);
