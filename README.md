@@ -5,3 +5,5 @@
 70爬楼梯类似于斐波那契,198
 ```
 - 递归: 93复原IP地址和与所有单词相关联的字符串
+
+start to wtite datastructure.
