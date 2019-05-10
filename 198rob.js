@@ -15,4 +15,4 @@ var rob = function (nums) {
   // console.log(dp)
   return dp[nums.length-1]
 };
-console.log(rob([1, 2, 3, 1]));
+// console.log(rob([1, 2, 3, 1]));

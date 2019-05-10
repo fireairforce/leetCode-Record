@@ -1,0 +1,19 @@
+{
+  "name": "leetcode-js",
+  "version": "1.0.0",
+  "description": "a leetcode repo",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fireairforce/leetCode-Record.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fireairforce/leetCode-Record/issues"
+  },
+  "homepage": "https://github.com/fireairforce/leetCode-Record#readme"
+}
