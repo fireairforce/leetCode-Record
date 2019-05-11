@@ -1,13 +1,14 @@
-// let gcd = (a,b)=>{
-//     while(b){
-//        let t = b;
-//        b = a% b;
-//        a = t;
-//     }
-//     return a;
-// }
-// // console.log(gcd(0,4))
-// // console.log(5%2);
+module.exports = {
+    add:(...args) => {
+        return args.reduce((prev,curr)=>{
+            return prev + curr;
+        })
+    },
+    mul: (...args) => {
+        return args.reduce((prev,curr)=>{
+            return prev*curr;
+        })
+    }
+}
 
-console.log(8%8);
 
