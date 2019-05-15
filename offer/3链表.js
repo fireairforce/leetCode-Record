@@ -10,6 +10,7 @@ function printListFromTailToHead(head)
         arr.unshift(head.val);
         haed=head.next;
     }
+    return arr;
 }
 module.exports = {
     printListFromTailToHead : printListFromTailToHead
