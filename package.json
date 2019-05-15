@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "a leetcode repo",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/simple.js",
+    "jest": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/fireairforce/leetCode-Record/issues"
   },
-  "homepage": "https://github.com/fireairforce/leetCode-Record#readme"
+  "homepage": "https://github.com/fireairforce/leetCode-Record#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "jest": "^24.8.0",
+    "mocha": "^6.1.4"
+  }
 }
