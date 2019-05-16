@@ -1,32 +1,13 @@
-module.exports = {
-    add:(...args) => {
-        return args.reduce((prev,curr)=>{
-            return prev + curr;
-        })
-    },
-    mul: (...args) => {
-        return args.reduce((prev,curr)=>{
-            return prev*curr;
-        })
+longest = (arr) => {
+    let sum = 0,res = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+        sum +=arr[i];
+        res = Math.max(sum,res);
+        if(sum<0){
+            sum = 0;
+        }
     }
+    return res;
 }
-
-let arr2 = [];
-let Reduce = (arr) =>{
-   arr.forEach(item=>{
-       if(item instanceof Array){
-           Reduce(item);
-       } else {
-           arr2.push(item);
-       }
-   })
-   return arr2;
-}
-Solved = (arr) =>{
-    arr = [...new Set(arr)]
-    arr.sort((a,b)=>a-b);
-    return arr;
-}
-let arr = [[1,2,4,5],[1,2,4],[[4,5,6],1,2],12]
-
-Reduce(arr)
+console.log(longest([1, 2, 3, -4, 2]));
+// longest()
