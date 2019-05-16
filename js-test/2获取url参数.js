@@ -1,0 +1,4 @@
+function getUrlParam(sUrl, sKey) {
+    
+}
+
