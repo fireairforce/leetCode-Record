@@ -1,0 +1,3 @@
+function curryIt(fn) {
+
+}
