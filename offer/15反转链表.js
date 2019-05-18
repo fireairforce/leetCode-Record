@@ -18,7 +18,7 @@ function ReverseList(pHead) {
         pre = next;
         next = r;
     }
-    return p;
+    return pre
 }
 module.exports = {
     ReverseList: ReverseList
