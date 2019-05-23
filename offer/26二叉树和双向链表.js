@@ -50,29 +50,27 @@
 } */
 function Convert(root) {
     // write code here
-    if(!root) return null;
-    let stack = [];
-    let p = root; 
-    let pre = null;　　// 用于保存中序遍历序列的上一个节点
-    let flag = true;
-    while(p!==null||stack.length!==1){
-        while(p){
-            stack.push(p);
-            p = p.left;
-        }
-        p = stack.pop();
-        if(flag){
-            root = p; // 将中序遍历中第一个节点记为root
-            pre = root;
-            flag = false;
-        } else {
-            pre.right = p;
-            p.left = pre;
-            pre = p;
-        }
+    if(!root) {
+        return null;
+    }
+    if(root.right === null && root.left===null) {
+        return root;
+    }
+    let left = Convert(root.left);
+    let p = left;
+    while(p!==null&&p.right!==null){
         p = p.right;
     }
-    return root;
+    if(left!==null){
+        p.right = root;
+        root.left = p;
+    }
+    let right = Convert(root.right);
+    if(right){
+        right.left = root;
+        root.right = right;
+    }
+    return left!==null?left:root;
 }
 module.exports = {
     Convert: Convert
