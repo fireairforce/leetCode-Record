@@ -22,3 +22,22 @@ function MidInorder(root){
         MidInorder(root.right);
     }
 }
+
+function deleteDuplicatie(pHead){
+    if(pHead === null || pHead.next === null) {
+        return pHead;
+    }
+    let p = pHead;
+    if(pHead.val === p.next.val){
+        p = p.next.next;
+        while(p!==null&&p.val===pHead.val){
+            p = p.next;
+        }
+        return deleteDuplicatie(p);
+    } else {
+        p = pHead.next;
+        pHead.next = deleteDuplicatie(p);
+        return pHead;
+    }
+}
+// nav header aside footer article 标签
