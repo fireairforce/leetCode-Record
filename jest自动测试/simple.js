@@ -1,4 +1,4 @@
-const { add,mul } = require('../test');
+const { add,mul } = require('.');
 const { should,expect,assert } = require('chai');
  
 describe('#test',()=>{
