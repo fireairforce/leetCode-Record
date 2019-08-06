@@ -28,6 +28,7 @@ var findLongestWord = function (s, d) {
 };
 
 let panduan = (s1, s2) => {
+  // 这个地方用于判断s2是否是s1的一个子序列
   let i = 0;
   let j = 0;
   while (i < s1.length && j < s2.length) {
