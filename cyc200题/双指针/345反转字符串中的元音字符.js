@@ -3,8 +3,10 @@
  * @return {string}
  */
 var reverseVowels = function (s) {
-    let i = 0,
-        j = s.length - 1;
+    // 记住一定要把字符串先散成数组 
+    s=[...s];
+    let i = 0;
+    let j = s.length - 1;
     let word = {
         'a': 1,
         'e': 1,
@@ -17,21 +19,20 @@ var reverseVowels = function (s) {
         'O': 1,
         'U': 1
     }
-    while (i <= j) {
-        if (word[s[i]]) {
-            j--;
-            if (word[s[j]]) {
-                let temp = s[i];
-                s[i] = s[j];
-                s[j] = temp;
-            }
-        } else if (word[s[j]]) {
-            i++;
-            if (word[s[i]]) {
-                let temp = s[i];
-                s[i] = s[j];
-                s[j] = temp;
-            }
-        }
+    while(i<=j){
+      if(!word[s[i]]){
+        i++;
+      }else if(!word[s[j]]){
+        j--;
+      } else {
+          // console.log(s[i],s[j]);
+          [s[i],s[j]] = [s[j],s[i]];
+          // console.log(s[i],s[j]);
+          i++;
+          j--;
+      }   
     }
+    return s.join('');
 };
+
+// console.log(reverseVowels('leetcode'));
