@@ -27,5 +27,5 @@ var topKFrequent = function (nums, k) {
       num.push(parseInt(i));
     }
   })
-  console.log(num);
+  return num;
 };
