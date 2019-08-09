@@ -9,7 +9,7 @@ var findContentChildren = function (g, s) {
   let sum = 0,
     i = 0,
     j = 0;
-    // 直接用饼干数量去遍历就行了,饼干分完了就结束
+    // 直接用饼干数量去遍历就行了,饼干分完了或者人没了就结束
   while (j < g.length || j < s.length) {
     if(s[j]>=g[i]){
       sum++;
