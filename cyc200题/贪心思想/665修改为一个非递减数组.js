@@ -5,14 +5,16 @@
 var checkPossibility = function (nums) {
   let sum = 0;
   for (let i = 1; i < nums.length; i++) {
-    if (nums[i] < nums[i - 1]) {
-      nums[i] = nums[i-1];
-      sum++;
+    if (nums[i] >= nums[i - 1]) {
+      continue;
+    }
+    sum++;
+    if (i > 1 && nums[i - 2] > nums[i]) {
+      nums[i] = nums[i - 1];
+    } else {
+      nums[i - 1] = nums[i];
     }
   }
-  if (sum <= 1) {
-    return true
-  } else return false;
+  return sum <= 1;
 };
-
-// console.log(checkPossibility([4,2,3]));
+// console.log(checkPossibility([3,4,2,3]));
