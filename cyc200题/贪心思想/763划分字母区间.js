@@ -32,6 +32,7 @@ var partitionLabels = function (S) {
       arr.push(i);
     }
   }
+  // 对数据处理一下
   for (let i = arr.length - 1; i >= 0; i--) {
     if (i !== 0) {
       arr[i] = arr[i] - arr[i - 1];
