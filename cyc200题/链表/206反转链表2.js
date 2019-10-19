@@ -13,7 +13,7 @@ var reverseList = function(head) {
   if (head === null || head.next == null) {
     return head;
   }
-  let next = head.next;
+  let { next } = head;
   let newHead = reverseList(next);
   next.next = head;
   head.next = null;
