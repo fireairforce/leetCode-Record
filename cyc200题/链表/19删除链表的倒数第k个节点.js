@@ -10,23 +10,25 @@
  * @param {number} n
  * @return {ListNode}
  */
+/*
+  搞个双指针去扫即可
+*/
 var removeNthFromEnd = function(head, n) {
   let p1 = head;
-  let p2 = head;
-  if (head === null || head.next === null) {
-    return null;
+  //    先让一根指针先走n
+  for(let i = 0 ;i < n;i++) {
+      p1 = p1.next;
   }
-  let sum = 0;
-  while (head) {
-    if (head.next !== null && sum < n) {
-       sum++;
-    }
-    if (head.next !== null && sum === n) {
+  //   如果这根指针走到头了，那么头结点GG了
+  if(p1 === null) {
+      return head.next;
+  } 
+  let p2 = head;
+  //   然后放另一根指针开始走
+  while(p1.next) {
+      p1 = p1.next;
       p2 = p2.next;
-    }
-    head = head.next;
-    p1 = p1.next;
   }
   p2.next = p2.next.next;
-  return p2;
+  return head;
 };
