@@ -12,12 +12,14 @@
  */
 /**
  * 我佛了，这题用js拿不到l1链表节点的值?????
+ * 暂时还没写完这题
  */
 var addTwoNumbers = function(l1, l2) {
   let p1 = l1,
     p2 = l2;
   let sum1 = [],
     sum2 = [];
+    // 这样去遍历取不出来值
   while (p1) {
     sum1.unshift(p1.val);
     p1 = p1.next;
