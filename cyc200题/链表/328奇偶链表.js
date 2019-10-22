@@ -9,6 +9,9 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+/*
+这题本质的解法是搞两根指针，一根指针用于指向奇数节点，一根用于偶数节点，然后把两条链表连在一起
+*/
 var oddEvenList = function(head) {
     if(head === null) {
         return head;
