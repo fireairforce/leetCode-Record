@@ -41,10 +41,11 @@ var addTwoNumbers = function(l1, l2) {
   if (sum1[len] !== 0) {
     len++;
   }
-  let newHead = new ListNode(-1);
+  let newHead = l1;
   for (let i = len - 1; i >= 0; i--) {
      newHead.val = sum1[i];
      newHead = newHead.next;
   }
+  newHead.next = null;
   return newHead;
 };
