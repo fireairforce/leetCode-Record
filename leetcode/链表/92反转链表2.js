@@ -12,17 +12,21 @@
  * @return {ListNode}
  */
 var reverseBetween = function(head, m, n) {
-  let p = head;
+  let temp = new ListNode(0);
+  temp.next = head;
+  let pre = temp;
   for (let i = 1; i < m; i++) {
-    p = p.next;
+    pre = pre.next;
   }
-  //   此时p到了m这个节点
-  let p1 = p.next;
+  // head此时就是当前节点
+  head = pre.next;
   for (let i = m; i < n; i++) {
-    let temp = p1.next;
-    p1.next = temp.next;
-    temp.next = p.next;
-    p.next = temp;
+    // next作为当前节点的下一个节点
+    let nex = head.next;
+    // 其实这里也相当于使用头插法搞了一波
+    head.next = nex.next;
+    nex.next = pre.next;
+    pre.next = nex;
   }
-  return head;
+  return temp.next;
 };
