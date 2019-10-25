@@ -11,5 +11,11 @@
  * @return {boolean}
  */
 var hasPathSum = function(root, sum) {
-    
+    if(!root) {
+        return false;
+    }
+    if(root.left === null && root.right === null && root.val === sum) {
+        return true;
+    }
+    return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);
 };
