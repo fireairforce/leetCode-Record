@@ -1,31 +1,32 @@
 var maxDepth = function(root) {
-  if (!root) {
-    return 0;
-  }
-  let depth = 1;
-  let stack = [root];
-  let currentNode = root;
-  while (stack.length) {
-    while (getNotChild(currentNode)) {
-      stack.push(getNotChild(currentNode));
-      currentNode = getNotChild(currentNode);
-      currentNode.ok = true;
-      if (stack.length > depth) {
-        depth = stack.length;
-      }
+    if(!root) {
+        return 0;
     }
-    stack.pop();
-    currentNode = stack[stack.length - 1];
-  }
-  return depth;
-};
+    if(!root.left && !root.right) {
+        return 1;
+    }
+    // BFS来一次层次遍历
+    let cur = root;
+    const queue = [root, null];
+    let depth = 1;
+    while((cur = queue.shift())!==undefined) {
+        if(cur === null) {
+            if(!queue.length) {
+                return depth;
+            }
+            depth ++;
+            queue.push(null);
+            continue;
+        }
+        const l = cur.left;
+        const r = cur.right;
 
-function getNotChild(root) {
-  if (root.left && !root.left.ok) {
-    return root.left;
-  }
-  if (root.right && !root.right.ok) {
-    return root.right;
-  }
-  return null;
+        if(l) {
+            queue.push(l);
+        } 
+        if(r) {
+            queue.push(r);
+        }
+    }
+    return depth;
 }
