@@ -9,7 +9,8 @@ var maxDepth = function(root) {
     let cur = root;
     const queue = [root, null];
     let depth = 1;
-    while((cur = queue.shift())!==undefined) {
+    // queue是个队列，直到取空就莫得了,这个循环就跳出来了
+    while((cur = queue.shift())) {
         if(cur === null) {
             if(!queue.length) {
                 return depth;
