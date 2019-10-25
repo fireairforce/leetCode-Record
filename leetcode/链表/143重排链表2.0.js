@@ -20,20 +20,25 @@ var reorderList = function(head) {
     slow = slow.next;
     fast = fast.next.next;
   }
-  //   中点后的链表反转
-  let needReverser = slow.next;
+//   后面的节点进行一个反转
+  let cur = slow.next;
   slow.next = null;
-  needReverser=reverseList(needReverser);
-  // 插入前端的缝隙
-  let cur = head;
-  while(cur && needReverser) {
-      let curSecond = needReverser;
-      needReverser = needReverser.next;
-      let nextCur = cur.next;
-      curSecond.next = cur.next;
-      cur.next = curSecond;
-      cur = nextCur;
-  }   
+  slow = reverseList(cur);
+  
+  fast = head.next;
+  cur = head;
+  //   将反转后的节点添加到前面去
+  while(fast && slow) {
+      cur.next = slow;
+      slow = slow.next;
+      cur = cur.next;
+      cur.next = fast;
+      fast = fast.next;
+      cur = cur.next;
+  }
+  if(slow) {
+     cur.next = slow;
+  }
   return head;
 };
 
