@@ -26,3 +26,5 @@ const zx = (root, arr) => {
   arr.push(root.val);
   zx(root.right, arr);
 };
+
+// 一般我们在数据规模不大的时候，使用递归来进行操作
