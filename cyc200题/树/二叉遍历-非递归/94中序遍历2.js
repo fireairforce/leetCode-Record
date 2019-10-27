@@ -5,7 +5,7 @@ var inorderTraversal = function(root) {
   let ret = [];
   let res = [root];
   let left = root.left;
-  //   先把根和左节点全部入栈
+  //   先把根的左节点全部入栈
   while (left) {
     res.push(left);
     left = left.left;
