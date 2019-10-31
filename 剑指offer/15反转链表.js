@@ -8,17 +8,14 @@ function ReverseList(pHead) {
     if(pHead === null || pHead.next===null){
         return pHead;
     }
-    let r = null;
-    let pre = pHead;
-    let next = pHead.next;
-    pHead.next = null;
-    while(next){
-        r = next.next;
-        next.next = pre;
-        pre = next;
-        next = r;
+    let newHead;
+    while(head){
+        let temp = head.next;
+        head.next = newHead;
+        newHead = head;
+        head = temp;
     }
-    return pre
+    return newHead;
 }
 module.exports = {
     ReverseList: ReverseList
