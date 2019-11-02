@@ -21,7 +21,6 @@ var maxDepth = function(root) {
         }
         const l = cur.left;
         const r = cur.right;
-
         if(l) {
             queue.push(l);
         } 
