@@ -21,6 +21,7 @@ var inorderTraversal = function(root) {
   let left = root.left;
   //   stack中弹出的当前项
   let item = null;
+  // 中序遍历为左根右(所以先推左的，然后再第一个pop出去)
   while (left) {
     stack.push(left);
     left = left.left;
