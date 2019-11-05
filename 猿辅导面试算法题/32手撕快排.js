@@ -2,7 +2,7 @@ const quickSort = (arr) => {
     if (arr.length <= 0) {
         return  arr;
     }
-    let privotIndex = Math.floor(arr.length >> 2);
+    let privotIndex = Math.floor(arr.length >> 1);
     let privot = arr.splice(privotIndex, 1)[0];
     let left = [];
     let right = [];
