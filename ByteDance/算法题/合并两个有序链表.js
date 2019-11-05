@@ -1,3 +1,4 @@
+// 面试的时候尽量不要写递归
 const mergeList = (l1,l2) => {
    let newHead = new ListNode(-1);
    let cur = newHead;
