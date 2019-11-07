@@ -13,15 +13,17 @@ var lengthOfLongestSubstring = function(s) {
   let slidingWindow = [];
   for (let c of s) {
     if (mapper[c]) {
-        // 如果这个字符已经出现过
+        // 如果这个字符已经出现过,先找到第一个出现的地方
       const delIndex = slidingWindow.findIndex((_c) => _c === c);
       for (let i = 0; i < delIndex; i++) {
           mapper[slidingWindow[i]] = false;
       }
+      // 把删除节点前面的字符给切割出去
       slidingWindow = slidingWindow.slice(delIndex + 1).concat(c);
     } else {
         // 如果这个字符没有出现过
         if(slidingWindow.push(c)>res) {
+          // sligingWindow.push(c)可以输出push过后的数组长度
             res = slidingWindow.length;
         }
     }

@@ -90,3 +90,6 @@
 
 
 console.log(null !== undefined);
+
+let arr = [1,2,5,34]
+console.log(arr.push(1));
