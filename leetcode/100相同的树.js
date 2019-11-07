@@ -10,39 +10,37 @@
  * @param {TreeNode} q
  * @return {boolean}
  */
+
+// 前序遍历来判断顺序
 var isSameTree = function(p, q) {
-    if(!p&&!q){
-        return true;
-    }
-    if(!p || !q){
-        return false;
-    }
-    const result1 = qx(p);
-    const result2 = qx(q); 
-    if(result1.length !== result2.length){
-        return false;
-    }
-    for(let i = 0;i<result1.length;i++){
-        if(result1[i]!==result2[i]){
-            return false;
-        }
-    }   
+  if (!p && !q) {
     return true;
-};
-
-const qx = (root) => {
-    if(!root) {
-        return;
+  }
+  if (!p || !q) {
+    return false;
+  }
+  const stackP = [p];
+  const stackQ = [q];
+  while (stackP.length===0 || stackQ.length===0) {
+    let pNode = stackP.pop();
+    let qNode = stackQ.pop();
+    if (pNode === null && qNode === null) {
+      continue;
     }
-    let res = [];
-    let stack = [root];
-    let t = stack.pop();
-    while(t) {
-        res.push(t.val);
-        t.right && stack.push(t.right);
-        t.left && stack.push(t.left);
-        t = stack.pop();
-    }    
-    return res;
-}
-
+    if(pNode === null){
+        return false;
+    }
+    if(qNode === null) {
+        return false;
+    }
+    if (qNode.val !== pNode.val) {
+      return false;
+    } else {
+      stackP.push(pNode.right);
+      stackQ.push(qNode.right);
+      stackP.push(pNode.left);
+      stackQ.push(qNode.left);
+    }
+  }
+  return true;
+};
