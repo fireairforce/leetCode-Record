@@ -11,27 +11,28 @@
  * @return {ListNode}
  */
 var detectCycle = function(head) {
-  if (!head || !head.next) {
-    return null;
+  if (!head) {
+    return head;
   }
-  let p1 = head,
-    p2 = head;
-  let hasCryCle = false;
-  while(p2 && p2.next) {
-      p1 = p1.next;
-      p2 = p2.next.next;
-      if(p1===p2) {
-          hasCryCle = true;
-          break;
-      }
+  let fast = head,
+    slow = head;
+  let hasCycle = false;
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    slow = slow.next;
+    if (fast === slow) {
+      hasCycle = true;
+      break;
+    }
   }
-  if(hasCryCle) {
-      let q = head;
-      while(p !== q) {
-          p = p.next;
-          q = q.next;
-      }
-      return q;
+  let p = head;
+  if (hasCycle) {
+    // 这里找的是入环的前一个节点,所以从环和起点同时开始走，他们会在入环前碰到
+    while (fast !== p) {
+      fast = fast.next;
+      p = p.next;
+    }
+    return p;
   } else {
     return null;
   }
