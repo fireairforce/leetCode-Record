@@ -3,10 +3,10 @@
  * @param {number} k
  * @return {string}
  */
-var getPermutation = function(n, k) {
-    let str;
+var getPermutation = function (n, k) {
+  let str = '';
   for (let i = 1; i <= n; i++) {
-    str += "i";
+    str += i;
   }
   const result = fullPermutation(str);
   return result[k - 1];

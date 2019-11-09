@@ -39,4 +39,3 @@ Math.max.call(null,a1);
 
 // 判断字符串的类型
 Object.prototype.toString.call({})
-
