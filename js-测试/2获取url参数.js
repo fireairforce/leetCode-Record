@@ -1,4 +1,0 @@
-function getUrlParam(sUrl, sKey) {
-    
-}
-
