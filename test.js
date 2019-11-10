@@ -88,8 +88,4 @@
 
 // console.log(uniqueify((test2),a=>(a.id)));
 
-
-console.log(null !== undefined);
-
-let arr = [1,2,5,34]
-console.log(arr.push(1));
+console.log(['1','2','3'].map(parseInt));
