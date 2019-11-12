@@ -24,6 +24,7 @@ var minimumTotal = function(triangle) {
       if (i === rows - 1) {
         dp[i][j] = triangle[i][j];
       } else {
+        //   在这里dp下就可以了
         dp[i][j] = triangle[i][j] + Math.min(dp[i + 1][j], dp[i + 1][j + 1]);
       }
     }

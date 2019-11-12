@@ -1,9 +1,14 @@
+/*
+ * @lc app=leetcode id=155 lang=javascript
+ *
+ * [155] Min Stack
+ */
 /**
  * initialize your data structure here.
  */
 var MinStack = function() {
-  this.arr = [];
-  this.min = Number.MIN_SAFE_INTEGER;
+  this.stack = [];
+  this.min = Number.MAX_VALUE;
 };
 
 /**
@@ -11,31 +16,46 @@ var MinStack = function() {
  * @return {void}
  */
 MinStack.prototype.push = function(x) {
+  // update 'min'
+  const min = this.min;
   if (x < this.min) {
     this.min = x;
   }
-  this.arr.push(x);
+  return this.stack.push(x - min);
 };
 
 /**
  * @return {void}
  */
 MinStack.prototype.pop = function() {
-   return this.arr.pop();
+  const item = this.stack.pop();
+  const min = this.min;
+
+  if (item < 0) {
+    this.min = min - item;
+    return min;
+  }
+  return item + min;
 };
 
 /**
  * @return {number}
  */
 MinStack.prototype.top = function() {
-    return this.arr[this.arr.length - 1];
+  const item = this.stack[this.stack.length - 1];
+  const min = this.min;
+
+  if (item < 0) {
+    return min;
+  }
+  return item + min;
 };
 
 /**
  * @return {number}
  */
 MinStack.prototype.getMin = function() {
-    return this.min;
+  return this.min;
 };
 
 /**
