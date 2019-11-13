@@ -48,7 +48,6 @@
 // }
 // console.log(typeof func.prototype);
 
-
 // let uniqueify = (arr, func) => {
 //   if (!func) {
 //     return [...new Set(arr)];
@@ -88,4 +87,10 @@
 
 // console.log(uniqueify((test2),a=>(a.id)));
 
-console.log(['1','2','3'].map(parseInt));
+// console.log(['1','2','3'].map(parseInt));
+
+var b = 10;
+(function b() {
+  b = 20;
+  console.log(b);
+})();
