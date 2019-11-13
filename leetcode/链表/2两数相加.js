@@ -10,33 +10,34 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
+// 这就是个裸的大数相加
 var addTwoNumbers = function(l1, l2) {
-  let num1 = [],
-    num2 = [];
-  let len1 = 0,
-    len2 = 0;
-  let p1 = l1,
-    p2 = l2;
-  while (p1) {
-    num1.push(p1.val);
-    p1 = p1.next;
-    len1++;
+  if (l1 === null || l2 === null) {
+    return null;
   }
-  while (p2) {
-    num2.push(p2.val);
-    p2 = p2.next;
-    len2++;
-  }
-  p1 = l1;
-  p2 = l2;
-  let p3 = new ListNode(0);
-  if (len1 > len2) {
-    p3.next = len1;
-    let sum = 0;
-    for (let i = 0; i < len2; i++) {
-       
+  let pHead = new ListNode(0);
+  let p1 = l1;
+  let p2 = l2;
+  let p = pHead;
+  // 用来判断是否进位
+  let flag = 0;
+  while (l1 || l2) {
+    let val1 = p1 ? p1.val : 0;
+    let val2 = p2 ? p2.val : 0;
+    let sum = val1 + val2 + flag;
+    let newNode = new ListNode(sum % 10);
+    flag = sum >= 10 ? 1 : 0;
+    p.next = newNode;
+    p = p.next;
+    if (p1) {
+      p1 = p1.next;
     }
-  } else {
-    p3.next = len2;
+    if (p2) {
+      p2 = p2.next;
+    }
   }
+  if (flag) {
+    p.next = new ListNode(flag);
+  }
+  return pHead.next;
 };
