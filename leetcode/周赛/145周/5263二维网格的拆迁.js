@@ -25,7 +25,7 @@ var shiftGrid = function(grid, k) {
       m++;
     }
   }
-  console.log(res);
+  return res;
 };
 
 const flattern = (arr) => {
