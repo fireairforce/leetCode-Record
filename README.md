@@ -1,6 +1,7 @@
 ## Code Record
-[![Travis](https://img.shields.io/badge/language-JavaScript-yellow.svg)]()
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/fireairforce/leetCode-Record/blob/master/LICENSE)
+[![Travis](https://img.shields.io/badge/language-JavaScript-yellow.svg)]()
 
 >　记录我从 2019.07开始至今的代码、刷题记录
 
