@@ -24,10 +24,10 @@
 - [x] 字符串
 
 前端相关的手写代码有:
-- [x] 手写`bind`
-- [x] 手写`apply`
-- [x] 手写`call`
-- [ ] 手写`promise` 
+- [x] [实现bind](./javascript-case/实现bind函数.js)
+- [x] [实现apply](./javascript-case/实现apply.js)
+- [x] [手写call](./javascript-case/实现call.js)
+- [ ] 手写promise 
 - [x] 实现防抖
 - [x] 实现节流
 - [x] 数组扁平化(递归/非递归)
