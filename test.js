@@ -88,9 +88,43 @@
 // console.log(uniqueify((test2),a=>(a.id)));
 
 // console.log(['1','2','3'].map(parseInt));
+let res = 0;
+let book = [];
+let a = [];
+for (let i = 0; i < 10; i++) {
+  book[i] = 0;
+  a[i] = 0;
+}
+const solve = () => {
+  dfs(1);
+  console.log(res);
+};
+const dfs = (n) => {
+  if (n === 10) {
+    if (
+      a[1] * (a[2] * 100 + a[3] * 10 + a[4]) ===
+      a[5] * (a[6] * 1000 + a[7] * 100 + a[8] * 10 + a[9])
+    ) {
+      res++;
+      console.log(`${a[1]}*${(a[2] * 100 + a[3] * 10 + a[4])} === ${a[5]} * ${(a[6] * 1000 + a[7] * 100 + a[8] * 10 + a[9])}`);
+    }
+    if (
+      (a[1] * 10 + a[2]) * (a[3] * 10 + a[4]) ===
+      (a[5] * 10 + a[6]) * (a[7] * 100 + a[8] * 10 + a[9])
+    ) {
+      res++;
+      console.log(`${(a[1] * 10 + a[2])}*${(a[3] * 10 + a[4])} === ${(a[5] * 10 + a[6])} * ${(a[7] * 100 + a[8] * 10 + a[9])}`);
+    }
+  }
+  for (let i = 1; i < 10; i++) {
+    if (book[i] === 0) {
+      a[n] = i;
+      book[i] = 1;
+      dfs(n + 1);
+      book[i] = 0;
+    }
+  }
+  return;
+};
 
-var b = 10;
-(function b() {
-  b = 20;
-  console.log(b);
-})();
+solve();
