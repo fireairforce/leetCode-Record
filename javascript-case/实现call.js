@@ -19,3 +19,14 @@ Function.prototype.myCall = function(context) {
   delete context.fn;
   return result;
 };
+
+Function.prototype.Call2 = function(context = window, ...args) {
+  if (typeof this !== "function") {
+    throw new TypeError("不是函数");
+  }
+  context = context || window;
+  context.fn = this;
+  let result = context.fn(...args);
+  delete context.fn;
+  return result;
+};
