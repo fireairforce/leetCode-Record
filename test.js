@@ -89,65 +89,36 @@
 
 // console.log(['1','2','3'].map(parseInt));
 
-// let res = 0;
-// let book = [];
-// let a = [];
-// for (let i = 0; i < 10; i++) {
-//   book[i] = 0;
-//   a[i] = 0;
-// }
-// const solve = () => {
-//   dfs(1);
-//   console.log(res);
-// };
-// const dfs = (n) => {
-//   if (n === 10) {
-//     if (
-//       a[1] * (a[2] * 100 + a[3] * 10 + a[4]) ===
-//       a[5] * (a[6] * 1000 + a[7] * 100 + a[8] * 10 + a[9])
-//     ) {
-//       res++;
-//       console.log(`${a[1]}*${(a[2] * 100 + a[3] * 10 + a[4])} === ${a[5]} * ${(a[6] * 1000 + a[7] * 100 + a[8] * 10 + a[9])}`);
-//     }
-//     if (
-//       (a[1] * 10 + a[2]) * (a[3] * 10 + a[4]) ===
-//       (a[5] * 10 + a[6]) * (a[7] * 100 + a[8] * 10 + a[9])
-//     ) {
-//       res++;
-//       console.log(`${(a[1] * 10 + a[2])}*${(a[3] * 10 + a[4])} === ${(a[5] * 10 + a[6])} * ${(a[7] * 100 + a[8] * 10 + a[9])}`);
-//     }
-//   }
-//   for (let i = 1; i < 10; i++) {
-//     if (book[i] === 0) {
-//       a[n] = i;
-//       book[i] = 1;
-//       dfs(n + 1);
-//       book[i] = 0;
-//     }
-//   }
-//   return;
-// };
+function QAQ(x, y) {
+  this.x = x;
+  this.y = y;
+  this.bark = function() {
+    console.log(`哈哈哈`);
+  };
+}
+const m = new QAQ(1, 2);
+console.log(m.x);
+m.bark();
 
-// solve();
+const an = [1, 2, 5, 7];
 
-var zx = (root) => {
-  if (!root) {
-    return [];
-  }
-  let stack = [root];
-  let ret = [];
-  let item = stack.pop();
-  while (item) {
-    stack.push(item);
-    item = item.left;
-  }
-  let t;
-  while ((t = stack.pop())) {
-    ret.push(t.val);
-    while (t.right) {
-      stack.push(t.right);
-      t.right = t.right.left;
-    }
-  }
-  return ret;
-};
+console.log(Object.prototype.toString.call([]));
+console.log(Object.prototype.toString.call("a"));
+console.log(Object.prototype.toString.call({}));
+console.log(Object.prototype.toString.call(1));
+console.log(Object.prototype.toString.call(undefined));
+console.log(Object.prototype.toString.call(null));
+
+function Foo(x, y) {
+  this.x = x;
+  this.y = y;
+  this.print = function() {
+    console.log(this.x);
+  };
+}
+
+const hh = new Foo(1, 2);
+
+console.log(hh.__proto__ === Foo.prototype);
+console.log(Foo.prototype.__proto__.__proto__);
+console.log(Foo.__proto__===Function.prototype);

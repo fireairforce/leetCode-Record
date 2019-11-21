@@ -14,3 +14,12 @@ function sayHi() {
 var inp = document.getElementById("inp");
 inp.addEventListener("input", debounce(sayHi));
 
+function debounce(fn, time) {
+  let timeout = null;
+  return function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      fn.apply(this, arguments);
+    }, time || 500);
+  };
+}
