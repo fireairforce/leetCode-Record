@@ -12,3 +12,11 @@ const add = (a, b, c) => {
 const add1 = curry(add);
 console.log(add1(1, 2)(3));
 console.log(add1(1)(2)(3));
+
+function curry(fn, ...args) {
+  if (args.length >= fn.length) {
+    return fn(...args);
+  } else {
+    return (...args1) => curry(...args, ...args1);
+  }
+}
