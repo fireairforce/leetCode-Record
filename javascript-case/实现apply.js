@@ -29,5 +29,6 @@ Function.prototype.Myapply = function(context = window, args) {
   } else {
     result = context.fn();
   }
+  delete context.fn;
   return result;
 };
