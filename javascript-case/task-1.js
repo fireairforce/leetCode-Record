@@ -44,3 +44,5 @@ Function.prototype.myBind = function(context, ...arg) {
     }
   };
 };
+
+
