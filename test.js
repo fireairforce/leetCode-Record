@@ -123,17 +123,5 @@ console.log(hh.__proto__ === Foo.prototype);
 console.log(Foo.prototype.__proto__.__proto__);
 console.log(Foo.__proto__ === Function.prototype);
 
-const obj = {};
-Object.defineProperty(obj, "name", {
-  get: function() {
-    console.log(`get`);
-    return `get name`
-  },
-  set: function(newVal) {
-    console.log(`set`);
-    console.log(newVal);
-  },
-});
 
-console.log(obj.name);
-obj.name = `wd`
+
