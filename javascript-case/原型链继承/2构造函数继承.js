@@ -1,16 +1,25 @@
-function Person(name, age, sex) {
+function Super() {
+  this.colors = [1,2,3,4];
+}
+
+function Sub(name){
+  // 继承super
+  Super.call(this,name);
   this.name = name;
-  this.age = age;
-  this.sex = sex;
 }
 
-function Student(name, age, sex, grade) {
-  Person.call(this, name, age, sex);
-  this.grade = grade;
+Sub.prototype.sayName = function(name){
+  console.log(this.name);
 }
 
-let student = new Student("wd", 18, "男", "大三");
+let instance1 = new Sub('wd');
+instance1.colors.push(5);
+console.log(instance1.colors);
+instance1.sayName()
 
+let instance2 = new Sub('xyx');
+console.log(instance2.colors);
+instance2.sayName();
 /**
  * 优点: 可以传参
    缺点:  1.不能继承借用构造函数的原型
