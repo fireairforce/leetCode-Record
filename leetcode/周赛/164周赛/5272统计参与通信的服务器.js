@@ -58,12 +58,7 @@ const judge = (grid, i, j, rows, cols) => {
       flag1 = true;
     }
   }
-
-  if (flag1 === true && flag2 === true) {
-    return true;
-  } else {
-    return false;
-  }
+  return flag1 && flag2;
 };
 // console.log(
 //   countServers([[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]]))
