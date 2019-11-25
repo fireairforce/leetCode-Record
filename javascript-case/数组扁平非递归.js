@@ -9,9 +9,7 @@ console.log(flattern([1,2,4,5,[1,[5,4,3,7]]]));
 
 const sleep = (time) => {
     return new Promise(resolve=>{
-        setTimeout(()=>{
-            resolve();
-        },time)
+        setTimeout(resolve,time)
     })
 }
 
