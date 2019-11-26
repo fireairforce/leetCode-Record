@@ -123,5 +123,12 @@ console.log(hh.__proto__ === Foo.prototype);
 console.log(Foo.prototype.__proto__.__proto__);
 console.log(Foo.__proto__ === Function.prototype);
 
-
-
+const debounce = (fn, time) => {
+  let time = null;
+  return (...args) => {
+    clearTimeout(time);
+    setTimeout(() => {
+      fn.apply(this, args);
+    }, time);
+  };
+};

@@ -32,3 +32,35 @@ Function.prototype.Myapply = function(context = window, args) {
   delete context.fn;
   return result;
 };
+
+Function.prototype.MyApply = function(context, arg) {
+  if (typeof this !== "function") {
+    throw new TypeError(`not function`);
+  }
+  let fn = new Symbol();
+  context[fn] = this;
+  let result;
+  if (Array.isArray(arg)) {
+    result = context[fn](...arg);
+  } else {
+    result = context[fn]();
+  }
+  delete context.fn;
+  return result;
+};
+
+Function.prototype.MyBind = function(context, ...arg) {
+  if (typeof this !== "function") {
+    throw new TypeError(`not function`);
+  }
+  const _this = this;
+  return function F(...arg1) {
+    if (this instanceof F) {
+      return new _this(...arg, ...arg1);
+    } else {
+      return _this.apply(context, arg.concat(arg1));
+    }
+  };
+};
+
+

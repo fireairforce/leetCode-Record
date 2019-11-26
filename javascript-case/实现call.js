@@ -30,3 +30,15 @@ Function.prototype.Call2 = function(context = window, ...args) {
   delete context.fn;
   return result;
 };
+
+Function.prototype.MyCall = function(context,...arg) {
+  if(typeof this !== 'function') {
+    throw new TypeError(`Not Function`)
+  } 
+  let context = context || window;
+  let fn = new Symbol();
+  context[fn] = this;
+  let result = context[fn](...arg);
+  delete context.fn;
+  return result;
+}

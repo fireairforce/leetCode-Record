@@ -3,27 +3,24 @@
     this.left = null;
     this.right = null;
 } */
-function PrintFromTopToBottom(root)
-{
-    // write code here
-    let arr = [];
-    let queue = [];
-    if(!root){
-        return [];
+function PrintFromTopToBottom(root) {
+  // write code here
+  if (!root) {
+    return [];
+  }
+  let res = [];
+  let stack = [root];
+  while (stack.length) {
+    let temp = [];
+    for (let i = 0; i < stack.length; i++) {
+      res.push(stack[i].val);
+      stack[i].left && temp.push(stack[i].left);
+      stack[i].right && temp.push(stack[i].right);
     }
-    queue.push(root);
-   while(queue.length){
-       root = queue.shift();
-       arr.push(root.val);
-       if(root.left){
-           queue.push(root.left);
-       }
-       if(root.right){
-           queue.push(root.right);
-       }
-   }
-   return arr;
+    stack = temp;
+  }
+  return res;
 }
 module.exports = {
-    PrintFromTopToBottom : PrintFromTopToBottom
+  PrintFromTopToBottom: PrintFromTopToBottom,
 };
