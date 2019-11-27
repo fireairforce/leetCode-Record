@@ -123,14 +123,3 @@ console.log(hh.__proto__ === Foo.prototype);
 console.log(Foo.prototype.__proto__.__proto__);
 console.log(Foo.__proto__ === Function.prototype);
 
-Function.prototype.MyApply = function(context, ...arg) {
-  if (typeof this !== "function") {
-    throw new TypeError(`not function`);
-  }
-  context = context || window;
-  let fn = new Symbol();
-  context[fn] = this;
-  let result = context[fn](...arg);
-  delete context[fn];
-  return result;
-};
