@@ -123,38 +123,14 @@ console.log(hh.__proto__ === Foo.prototype);
 console.log(Foo.prototype.__proto__.__proto__);
 console.log(Foo.__proto__ === Function.prototype);
 
-const debounce = (fn,xxx) => {
-  let time = null;
-  return (...args) => {
-    clearTimeout(time);
-    setTimeout(() => {
-      fn.apply(this, args);
-    }, xxx || 500);
-  };
+Function.prototype.MyApply = function(context, ...arg) {
+  if (typeof this !== "function") {
+    throw new TypeError(`not function`);
+  }
+  context = context || window;
+  let fn = new Symbol();
+  context[fn] = this;
+  let result = context[fn](...arg);
+  delete context[fn];
+  return result;
 };
-
-function FindNumbersWithSum(array, sum)
-{
-    // write code here
-    let hashTable = {};
-    for(let i = 0;i<array.length;i++){
-        if(hashTable[array[i]]){
-            hashTable[array[i]] ++;
-        } else {
-            hashTable[array[i]] = 1;
-        }
-    }
-    let max = 9999999;
-    for(let i = 0;i<array.length;i++){
-        if(hashTable[sum - array[i]]){
-            if(array*(sum-array[i])<max) {
-                max = array*(sum-array[i]);
-                temp = [];
-                temp.push(array[i],sum - array[i]);
-            }
-            hashTable[array[i]] = 0;
-            hashTable[sum - array[i]] = 0; 
-        }
-    }
-}
-console.log(FindNumbersWithSum([1,2,3,4,5],7));

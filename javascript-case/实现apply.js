@@ -49,18 +49,4 @@ Function.prototype.MyApply = function(context, arg) {
   return result;
 };
 
-Function.prototype.MyBind = function(context, ...arg) {
-  if (typeof this !== "function") {
-    throw new TypeError(`not function`);
-  }
-  const _this = this;
-  return function F(...arg1) {
-    if (this instanceof F) {
-      return new _this(...arg, ...arg1);
-    } else {
-      return _this.apply(context, arg.concat(arg1));
-    }
-  };
-};
-
 

@@ -17,3 +17,52 @@ var postorderTraversal = function(root) {
   }
   return res;
 };
+
+const hx = (root) => {
+  let stack = [root];
+  let res = [];
+  let p = root;
+  while (stack.length) {
+    let top = stack[stack.length - 1];
+    if (top.left === p || top.right === p || (!root.left && !root.right)) {
+      p = stack.pop();
+      res.push(p.val);
+    } else {
+      top.right && stack.push(top.right);
+      top.left && stack.push(top.left);
+    }
+  }
+  return res;
+};
+
+const qx = (root) => {
+  let stack = [root];
+  let res = [];
+  while ((item = stack.pop())) {
+    res.push(item.val);
+    item.right && stack.push(item.right);
+    item.left && stack.push(item.left);
+  }
+  return res;
+};
+
+
+const zx = (root) => {
+   let stack = [root];
+   let res = [];
+   let left = root.left;
+   while(left){
+     stack.push(left);
+     left = left.left;
+   }
+   let item; 
+   while(item = stack.pop()){
+     res.push(item.val);
+     let right = item.right;
+     if(right){
+       stack.push(right);
+       right = right.left;
+     }
+   }
+   return res;
+}
