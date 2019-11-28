@@ -123,3 +123,4 @@ console.log(hh.__proto__ === Foo.prototype);
 console.log(Foo.prototype.__proto__.__proto__);
 console.log(Foo.__proto__ === Function.prototype);
 
+

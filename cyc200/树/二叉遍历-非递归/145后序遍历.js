@@ -24,7 +24,7 @@ const hx = (root) => {
   let p = root;
   while (stack.length) {
     let top = stack[stack.length - 1];
-    if (top.left === p || top.right === p || (!root.left && !root.right)) {
+    if (top.left === p || top.right === p || (!top.left && !top.right)) {
       p = stack.pop();
       res.push(p.val);
     } else {
@@ -38,6 +38,7 @@ const hx = (root) => {
 const qx = (root) => {
   let stack = [root];
   let res = [];
+  let item;
   while ((item = stack.pop())) {
     res.push(item.val);
     item.right && stack.push(item.right);
@@ -46,23 +47,22 @@ const qx = (root) => {
   return res;
 };
 
-
 const zx = (root) => {
-   let stack = [root];
-   let res = [];
-   let left = root.left;
-   while(left){
-     stack.push(left);
-     left = left.left;
-   }
-   let item; 
-   while(item = stack.pop()){
-     res.push(item.val);
-     let right = item.right;
-     if(right){
-       stack.push(right);
-       right = right.left;
-     }
-   }
-   return res;
+  let stack = [root];
+  let res = [];
+  let left = root.left;
+  while(left){
+    stack.push(left);
+    left = left.left;
+  }
+  let item;
+  while(item=stack.pop()){
+    res.push(item.val);
+    let right = item.right;
+    while(right){
+      stack.push(right);
+      right = right.left;
+    }
+  }
+  return res;
 }

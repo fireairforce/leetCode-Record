@@ -4,18 +4,17 @@
  */
 var trap = function(height) {
   let max = 0;
-  let volumn = 0;
-  const rightMax = [];
-  const leftMax = [];
+  let res = 0;
+  let leftMax = [];
+  let rightMax = [];
   for (let i = 0; i < height.length; i++) {
     leftMax[i] = max = Math.max(max, height[i]);
   }
-  max = 0;
   for (let i = height.length - 1; i >= 0; i--) {
-    rightMax[i] = max = Math.max(max, height[i]);
+    rightMax[i] = maX = Math.max(max, height[i]);
   }
   for (let i = 0; i < height.length; i++) {
-    volumn = volumn + Math.min(leftMax[i], rightMax[i]) - height[i];
+    res += Math.min(leftMax[i], rightMax[i]) - height[i];
   }
-  return volumn;
+  return res;
 };
