@@ -89,38 +89,47 @@
 
 // console.log(['1','2','3'].map(parseInt));
 
-function QAQ(x, y) {
-  this.x = x;
-  this.y = y;
-  this.bark = function() {
-    console.log(`哈哈哈`);
-  };
+// function QAQ(x, y) {
+//   this.x = x;
+//   this.y = y;
+//   this.bark = function() {
+//     console.log(`哈哈哈`);
+//   };
+// }
+// const m = new QAQ(1, 2);
+// console.log(m.x);
+// m.bark();
+
+// const an = [1, 2, 5, 7];
+
+// console.log(Object.prototype.toString.call([]));
+// console.log(Object.prototype.toString.call("a"));
+// console.log(Object.prototype.toString.call({}));
+// console.log(Object.prototype.toString.call(1));
+// console.log(Object.prototype.toString.call(undefined));
+// console.log(Object.prototype.toString.call(null));
+
+// function Foo(x, y) {
+//   this.x = x;
+//   this.y = y;
+//   this.print = function() {
+//     console.log(this.x);
+//   };
+// }
+
+// const hh = new Foo(1, 2);
+
+// console.log(hh.__proto__ === Foo.prototype);
+// console.log(Foo.prototype.__proto__.__proto__);
+// console.log(Foo.__proto__ === Function.prototype);
+
+
+const obj = {
+  arr:[1,2,3,4],
+  xxx: function(){
+     for(var i = 0;i<this.arr.length;i++){
+       console.log(`${i}`)
+     }
+  }
 }
-const m = new QAQ(1, 2);
-console.log(m.x);
-m.bark();
-
-const an = [1, 2, 5, 7];
-
-console.log(Object.prototype.toString.call([]));
-console.log(Object.prototype.toString.call("a"));
-console.log(Object.prototype.toString.call({}));
-console.log(Object.prototype.toString.call(1));
-console.log(Object.prototype.toString.call(undefined));
-console.log(Object.prototype.toString.call(null));
-
-function Foo(x, y) {
-  this.x = x;
-  this.y = y;
-  this.print = function() {
-    console.log(this.x);
-  };
-}
-
-const hh = new Foo(1, 2);
-
-console.log(hh.__proto__ === Foo.prototype);
-console.log(Foo.prototype.__proto__.__proto__);
-console.log(Foo.__proto__ === Function.prototype);
-
-
+obj.xxx();

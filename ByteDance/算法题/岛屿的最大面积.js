@@ -28,12 +28,11 @@ var maxAreaOfIsland = function(grid) {
   let a = {};
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      a[nums[i][j]] = 0;
-    }
-  }
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      a[nums[i][j]]++;
+      if(!a[nums[i][j]]){
+        a[nums[i][j]] = 0;
+      } else {
+        a[nums[i][j]] ++;
+      }
     }
   }
   let len = 0;
