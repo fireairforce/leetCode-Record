@@ -48,5 +48,3 @@ Function.prototype.MyApply = function(context, arg) {
   delete context.fn;
   return result;
 };
-
-

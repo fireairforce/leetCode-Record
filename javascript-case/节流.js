@@ -12,6 +12,17 @@ function throttle(fn) {
     }, 500);
   };
 }
+
+function debounce(fn, time) {
+  let timer = null;
+  return function() {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+    }, time || 500);
+  };
+}
+
 function SayHi(e) {
   console.log(e.target.innerWidth, e.target.innerHeight);
 }
@@ -32,14 +43,13 @@ Function.prototype.myBind = function(context, ...arg) {
   };
 };
 
-
-Function.prototype.MyCall = function(context,...arg) {
-    if(typeof this !== 'function') {
-       throw new TypeError(`不是函数`)
-    }
-    context = context || window;
-    context.fn = this;
-    let result = context.fn(...arg);
-    delete context.fn;
-    return result;
-}
+Function.prototype.MyCall = function(context, ...arg) {
+  if (typeof this !== "function") {
+    throw new TypeError(`不是函数`);
+  }
+  context = context || window;
+  context.fn = this;
+  let result = context.fn(...arg);
+  delete context.fn;
+  return result;
+};
