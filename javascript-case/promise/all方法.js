@@ -20,3 +20,27 @@ Promise.all = function(promises) {
     }
   });
 };
+
+
+Promise.all = function(promises) {
+    return new Promise((resolve,reject) => {
+        let len = promises.length;
+        let result = [];
+        let index = 0;
+        if(len === 0){
+            resolve(result);
+        }
+        for(let i = 0;i<len;i++){
+            Promise.resolve(promises[i]).then(res=>{
+                result[i] = res;
+                index ++;
+                if(index === len) {
+                    resolve(result);
+                    return;
+                }
+            }).catch((err)=>{
+                reject(err)
+            })
+        }
+    })
+}
