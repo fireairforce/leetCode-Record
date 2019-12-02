@@ -10,6 +10,9 @@
  * @return {number[][]}
  */
 var zigzagLevelOrder = function(root) {
+    if(!root){
+        return [];
+    }
     let res = [];
     let stack = [root];
     while(stack.length){
