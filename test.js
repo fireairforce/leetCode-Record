@@ -133,3 +133,4 @@ const obj = {
   }
 }
 obj.xxx();
+// just test
