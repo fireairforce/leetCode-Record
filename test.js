@@ -124,13 +124,28 @@
 // console.log(Foo.__proto__ === Function.prototype);
 
 
-const obj = {
-  arr:[1,2,3,4],
-  xxx: function(){
-     for(var i = 0;i<this.arr.length;i++){
-       console.log(`${i}`)
-     }
-  }
-}
-obj.xxx();
+// const obj = {
+//   arr:[1,2,3,4],
+//   xxx: function(){
+//      for(var i = 0;i<this.arr.length;i++){
+//        console.log(`${i}`)
+//      }
+//   }
+// }
+// obj.xxx();
 // just test ...
+// 相同大小的方格组成的m行n列的网格，从中心的一个方格一圈一圈向外排序，例如
+
+sortGrid = (arr) => {
+  
+}
+
+[[1,1],
+[0,1],
+[0,0],
+[1,0],
+[2,0],
+[2,1],
+[2,2],
+[1,2],
+[0,2]]
