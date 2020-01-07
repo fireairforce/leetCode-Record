@@ -27,7 +27,7 @@
 - [x] [实现bind](./javascript-case/实现bind函数.js)
 - [x] [实现apply](./javascript-case/实现apply.js)
 - [x] [手写call](./javascript-case/实现call.js)
-- [ ] 手写promise 
+- [x] [手写promise](./javascript-case/promise/) 
 - [x] [实现防抖](./javascript-case/防抖.js)
 - [x] [实现节流](./javascript-case/节流.js)
 - [x] [数组扁平化(递归/非递归)](./javascript-case/数组扁平非递归.js)
