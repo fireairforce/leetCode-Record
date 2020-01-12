@@ -3,19 +3,45 @@
  * @param {number[][]} connections
  * @return {number}
  */
-var makeConnected = function(n, connections) {
-  let m = connections.length;
-  if (n > connections.length + 1) {
-    return -1;
+let father = [];
+const init = (n) => {
+  for (let i = 0; i < n; i++) {
+    father[i] = i;
   }
-  connections.sort((a,b)=>{
-      if(a[0]===b[0]){
-          return a[1] - b[1];
-      }
-      return a[0] - b[0];
-  });
-  console.log(connections);
-  
 };
 
-console.log(makeConnected(10,[[0,4],[1,6],[2,9],[4,7],[0,6],[6,9],[4,8],[1,4],[4,9],[1,8],[2,8],[3,4],[0,9]]));
+const find = (x) => {
+  while (x !== father[x]) {
+    father[x] = father[father[x]];
+    x = father[x];
+  }
+  return x;
+};
+
+const union = (x, y) => {
+  let ux = find(x);
+  let uy = find(y);
+  if (ux === uy) {
+    return 0;
+  }
+  father[ux] = uy;
+  return 1;
+};
+var makeConnected = function(n, connections) {
+  if (connections.length < n - 1) {
+    return -1;
+  }
+
+  init(n);
+  connections.map((item) => {
+    union(item[0], item[1]);
+  });
+  let count = 0;
+  for (let i = 0; i < n; i++) {
+    // 找到一个联通分支
+    if (find(i) === i) {
+      count++;
+    }
+  }
+  return count - 1;
+};
