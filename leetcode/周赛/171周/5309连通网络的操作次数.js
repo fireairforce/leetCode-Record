@@ -31,7 +31,6 @@ var makeConnected = function(n, connections) {
   if (connections.length < n - 1) {
     return -1;
   }
-
   init(n);
   connections.map((item) => {
     union(item[0], item[1]);
