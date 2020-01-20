@@ -1,42 +1,54 @@
-const solve = (str) => {
-  let temp = transfer(str);
-  console.log(temp);
-  return evalRPN(temp);
-};
-
+// 判定表达式的优先级
+const prio = (op) => {
+   if(op === '*' || op === '/') {
+     return 2;
+   } 
+   if(op === '+' || op === '-') {
+     return 1;
+   } 
+   if(op === '(') {
+     return 0;
+   }
+}
+// 把中缀表达式转成后缀表达式
 const transfer = (str) => {
-  const stack = [];
-  let arr = [];
+  let stack = [];
+  let tempStr = '';
   for(let i = 0;i<str.length;i++) {
-    if(str[i] === ')') {
-      while(true) {
-        let top = stack[stack.length - 1];
+    if('0'<=str[i] && str[i]<='9') {
+      tempStr += str[i];
+    } else {
+      // 栈空入栈
+      if(!stack.length) {
+        stack.push(str[i]);
+      } else if(str[i] === '(') {
+        stack.push(str[i]);
+      } else if(str[i] === ')') {
+        // 把括号里面的数字加起来
+        while(stack[stack.length - 1] !== '(') {
+          tempStr += stack.pop();
+        }
+        // 左括号弹出来
         stack.pop();
-        if('(' !== top) {
-          arr[arr.length] = top;
-        } else {
-          break;
-        }
-      }
-    } else if(['-','+'].indexOf(str[i]) !== -1) {
-      if(['*','/'].indexOf(stack[stack.length - 1]) !== -1) {
-        while(['*','/'].indexOf(stack[stack.length - 1]) !== -1) {
-          arr[arr.length] = stack[stack.length - 1];
-          stack.pop();
-        }
-        arr[arr.length] = str[i];
       } else {
+        // 栈顶部运算符优先级比当前运算符高，就弹出来
+        while(prio(str[i])<=prio(stack[stack.length - 1])) {
+          tempStr += stack.pop();
+          if(!stack.length) {
+             break;
+          }
+        }
         stack.push(str[i]);
       }
-    } else if(['*','/'].indexOf(stack[stack.length - 1] !== -1)) {
-      stack.push(str[i]);
-    } else {
-      arr[arr.length] = str[i];
     }
   }
-  return arr;
+  while(stack.length) {
+    tempStr += stack.pop();
+  }
+  return tempStr;
 }
 
+// 计算后缀表达式的值
 const evalRPN = (tokens) => {
   let stack = [];
   for (let i = 0; i < tokens.length; i++) {
@@ -62,4 +74,10 @@ const evalRPN = (tokens) => {
   return stack.pop();
 };
 
-console.log(solve('1 + 1'));
+const solve = (str) => {
+  let temp = transfer(str);
+  // console.log(temp);
+  return evalRPN(temp);
+};
+console.log(solve('7*(1+3)+2'));
+console.log(solve('6*(7*9+(6+3)/3)+8'));
