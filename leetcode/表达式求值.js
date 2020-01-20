@@ -1,48 +1,48 @@
 // 判定表达式的优先级
 const prio = (op) => {
-   if(op === '*' || op === '/') {
-     return 2;
-   } 
-   if(op === '+' || op === '-') {
-     return 1;
-   } 
-   if(op === '(') {
-     return 0;
-   }
+  if (op === '*' || op === '/') {
+    return 2;
+  }
+  if (op === '+' || op === '-') {
+    return 1;
+  }
+  if (op === '(') {
+    return 0;
+  }
 }
 // 把中缀表达式转成后缀表达式
 const transfer = (str) => {
   let stack = [];
   let tempStr = '';
-  for(let i = 0;i<str.length;i++) {
-    if('0'<=str[i] && str[i]<='9') {
+  for (let i = 0; i < str.length; i++) {
+    if ('0' <= str[i] && str[i] <= '9') {
       tempStr += str[i];
     } else {
       // 栈空入栈
-      if(!stack.length) {
+      if (!stack.length) {
         stack.push(str[i]);
-      } else if(str[i] === '(') {
+      } else if (str[i] === '(') {
         stack.push(str[i]);
-      } else if(str[i] === ')') {
+      } else if (str[i] === ')') {
         // 把括号里面的数字加起来
-        while(stack[stack.length - 1] !== '(') {
+        while (stack[stack.length - 1] !== '(') {
           tempStr += stack.pop();
         }
         // 左括号弹出来
         stack.pop();
       } else {
         // 栈顶部运算符优先级比当前运算符高，就弹出来
-        while(prio(str[i])<=prio(stack[stack.length - 1])) {
+        while (prio(str[i]) <= prio(stack[stack.length - 1])) {
           tempStr += stack.pop();
-          if(!stack.length) {
-             break;
+          if (!stack.length) {
+            break;
           }
         }
         stack.push(str[i]);
       }
     }
   }
-  while(stack.length) {
+  while (stack.length) {
     tempStr += stack.pop();
   }
   return tempStr;
