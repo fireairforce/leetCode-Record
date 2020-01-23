@@ -4,5 +4,7 @@
  * @return {boolean}
  */
 var isMatch = function(s, p) {
-  return new RegExp(p).test(s);
+  let re = new RegExp(p);
+  return re.test(p);
 };
+console.log(isMatch('a','aa'));
