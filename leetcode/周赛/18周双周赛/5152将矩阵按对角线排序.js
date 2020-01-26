@@ -17,37 +17,61 @@ var diagonalSort = function(mat) {
   let index = 0;
   for (let i = 0; i < row * col; i++) {
     res[index].push(mat[r][c]);
-    if (index % 2 === 0) {
-      if (r === row - 1) {
-        c++;
-        index++;
-      } else if (c === col - 1) {
-        r++;
-        index++;
+    if (index < Math.floor((row + col) / 2)) {
+      if (index % 2 === 0) {
+        if (r === row - 1) {
+          c++;
+          index++;
+        } else if (c === col - 1) {
+          r++;
+          index++;
+        } else {
+          r++;
+          c++;
+        }
       } else {
-        r++;
-        c++;
+        if (r === 0) {
+          c--;
+          index++;
+        } else if (c === 0) {
+          r--;
+          index++;
+        } else {
+          r--;
+          c--;
+        }
       }
     } else {
-      if (r === 0) {
-        c--;
-        index++;
-      } else if (c === 0) {
-        r--;
-        index++;
+      if (index % 2 !== 0) {
+        if (r === row - 1) {
+          c++;
+          index++;
+        } else if (c === col - 1) {
+          r++;
+          index++;
+        } else {
+          r++;
+          c++;
+        }
       } else {
-        r--;
-        c--;
+        if (r === 0) {
+          c--;
+          index++;
+        } else if (c === 0) {
+          r--;
+          index++;
+        } else {
+          r--;
+          c--;
+        }
       }
     }
   }
-  console.log(res);
-  for(let i = 0;i<res.length;i++) {
-    res[i] = res[i].sort((a,b)=>a-b)
+  for (let i = 0; i < res.length; i++) {
+    res[i] = res[i].sort((a, b) => a - b);
   }
-  console.log(res);
-  
-  return mat;
+
+  // return mat;
 };
 
 console.log(

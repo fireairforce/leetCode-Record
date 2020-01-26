@@ -26,4 +26,9 @@ var breakPalindrome = function(palindrome) {
   }
 };
 // console.log(breakPalindrome("aa"));
+
+
+
+// console.log(judge('aa'));
+
 // console.log(breakPalindrome('a'));
