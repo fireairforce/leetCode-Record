@@ -10,40 +10,33 @@
  * @return {number}
  */
 
-const hx = (root, res, sum, hash) => {
+const hx = (root, res) => {
   if (!root) {
     return;
   }
-  hx(root.left, res, sum, hash);
-  hx(root.right, res, sum, hash);
+  hx(root.left, res);
+  hx(root.right, res);
   res.push(root.val);
-  sum += root.val;
-  hash.push(sum);
 };
 
-let treeSum = (root) => {
-  let stack = [root];
-  let sum = 0;
-  while (stack.length) {
-    let temp = [];
-    for (let i = 0; i < stack.length; i++) {
-      sum += stack[i].val;
-      stack[i].left && temp.push(stack[i].left);
-      stack[i].right && temp.push(stack[i].right);
-    }
-    stack = temp;
+const dfs = (root, res, count) => {
+  if (!root) {
+    return 0;
   }
-  return sum;
+  let x = dfs(root.left, res, count) + dfs(root.right, res, count) + root.val;
+  res.push(x * (count - x));
+  return x;
 };
 
 var maxProduct = function(root) {
   let mod = 1e9 + 7;
   let res = [];
-  let hash = [];
-  hx(root, res, 0, hash);
+  hx(root, res);
   let count = 0;
   for (let i = 0; i < res.length; i++) {
     count += res[i];
   }
-  console.log(hash);
+  res = [];
+  dfs(root, res, count);
+  return res.sort((a, b) => b - a)[0] % mod;
 };
