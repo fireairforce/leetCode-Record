@@ -10,13 +10,15 @@
  * @return {number}
  */
 
-const qx = (root, res) => {
+const hx = (root, res, sum, hash) => {
   if (!root) {
     return;
   }
+  hx(root.left, res, sum, hash);
+  hx(root.right, res, sum, hash);
   res.push(root.val);
-  qx(root.left, res);
-  qx(root.right, res);
+  sum += root.val;
+  hash.push(sum);
 };
 
 let treeSum = (root) => {
@@ -34,39 +36,14 @@ let treeSum = (root) => {
   return sum;
 };
 
-const countRoot = (root, result) => {
-  let stack = [root];
-  while (stack.length) {
-    let temp = [];
-    for (let i = 0; i < stack.length; i++) {
-      stack[i].left &&
-        temp.push(stack[i].left) &&
-        result.push(treeSum(stack[i].left));
-      stack[i].right &&
-        temp.push(stack[i].right) &&
-        result.push(treeSum(stack[i].right));
-    }
-    stack = temp;
-  }
-  return result;
-};
-
 var maxProduct = function(root) {
   let mod = 1e9 + 7;
   let res = [];
-  let begin = root;
-  qx(begin, res);
+  let hash = [];
+  hx(root, res, 0, hash);
   let count = 0;
   for (let i = 0; i < res.length; i++) {
     count += res[i];
   }
-  let result = [];
-  countRoot(root, result);
-  let max = 0;
-  for (let i = 0; i < result.length; i++) {
-    if (max < (count - result[i]) * result[i]) {
-      max = (count - result[i]) * result[i];
-    }
-  }
-  return max % mod;
+  console.log(hash);
 };
