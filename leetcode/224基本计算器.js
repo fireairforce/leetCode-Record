@@ -14,8 +14,9 @@ const prio = (op) => {
 const transfer = (str) => {
   let stack = [];
   let tempStr = "";
+  str = str.split("");
   for (let i = 0; i < str.length; i++) {
-    if ("0" <= str[i] && str[i] <= "9") {
+    if (!Number.isNaN(Number(str[i]))) {
       tempStr += str[i];
     } else {
       // 栈空入栈
@@ -45,7 +46,6 @@ const transfer = (str) => {
   while (stack.length) {
     tempStr += stack.pop();
   }
-  console.log(tempStr);
   return tempStr;
 };
 
@@ -74,11 +74,14 @@ const evalRPN = (tokens) => {
   }
   return stack.pop();
 };
-
-const solve = (str) => {
-  let temp = transfer(str.replace(/\s/g, ""));
-  // console.log(temp);
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var calculate = function(s) {
+  let temp = transfer(s.replace(/\s/g, ""));
   return evalRPN(temp);
 };
-// console.log(solve("0-2147483647"));
-// console.log(solve("6*(7*9+(6+3)/3)+8"));
+
+// console.log(calculate("0-2147483647"));
+// console.log(calculate("6*(7*9+(6+3)/3)+8"));
