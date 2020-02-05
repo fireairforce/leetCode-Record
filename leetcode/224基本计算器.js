@@ -13,11 +13,15 @@ const prio = (op) => {
 // 把中缀表达式转成后缀表达式
 const transfer = (str) => {
   let stack = [];
-  let tempStr = "";
-  str = str.split("");
+  let tempStr = [];
   for (let i = 0; i < str.length; i++) {
-    if (!Number.isNaN(Number(str[i]))) {
-      tempStr += str[i];
+    if ("0" <= str[i] && str[i] <= "9") {
+      let num = parseInt(str[i]);
+      while (i + 1 < str.length && !Number.isNaN(Number(str[i + 1]))) {
+        num = num * 10 + parseInt(str[i + 1]);
+        i++;
+      }
+      tempStr.push(num);
     } else {
       // 栈空入栈
       if (!stack.length) {
@@ -27,14 +31,14 @@ const transfer = (str) => {
       } else if (str[i] === ")") {
         // 把括号里面的数字加起来
         while (stack[stack.length - 1] !== "(") {
-          tempStr += stack.pop();
+          tempStr.push(stack.pop());
         }
         // 左括号弹出来
         stack.pop();
       } else {
         // 栈顶部运算符优先级比当前运算符高，就弹出来
         while (prio(str[i]) <= prio(stack[stack.length - 1])) {
-          tempStr += stack.pop();
+          tempStr.push(stack.pop());
           if (!stack.length) {
             break;
           }
@@ -44,7 +48,7 @@ const transfer = (str) => {
     }
   }
   while (stack.length) {
-    tempStr += stack.pop();
+    tempStr.push(stack.pop());
   }
   return tempStr;
 };
@@ -82,6 +86,3 @@ var calculate = function(s) {
   let temp = transfer(s.replace(/\s/g, ""));
   return evalRPN(temp);
 };
-
-// console.log(calculate("0-2147483647"));
-// console.log(calculate("6*(7*9+(6+3)/3)+8"));
