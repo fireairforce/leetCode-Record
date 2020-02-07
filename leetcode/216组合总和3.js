@@ -5,24 +5,24 @@
  */
 // 和为n的k个数的组合
 var combinationSum3 = function(k, n) {
-  let res = [];
-  const dfs = (n, res, k, temp, i) => {
+  let res = []
+  const dfs = (n, k, j, res, tempRes) => {
     if (n < 0) {
-      return;
+      return
     }
     if (k === 0) {
       if (n === 0) {
-        res.push([...temp]);
+        res.push([...tempRes])
       }
-      return;
+      return
     }
-    for (let j = i + 1; j <= 9; j++) {
-      temp.push(j);
-      dfs(n - j, res, k - 1, temp, j);
-      temp.pop();
+    for (let i = j + 1; i <= 9; i++) {
+      tempRes.push(i)
+      dfs(n - i, k - 1, i, res, tempRes)
+      tempRes.pop()
     }
-    return;
-  };
-  dfs(n, res, k, [], 0);
-  return res;
-};
+    return
+  }
+  dfs(n, k, 0, res, [])
+  return res
+}
