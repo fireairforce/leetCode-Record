@@ -36,6 +36,3 @@ function quickSort(arr) {
     }
     return quickSort(left).concat([privot], quickSort(right));
 }
-module.exports = {
-    maxInWindows: maxInWindows
-};
