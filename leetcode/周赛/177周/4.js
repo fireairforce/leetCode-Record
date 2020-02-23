@@ -6,10 +6,7 @@ var largestMultipleOfThree = function(digits) {
   let arr = JSON.parse(JSON.stringify(digits))
   let arr1 = arr.filter((item) => item % 3 === 1).sort((a, b) => a - b)
   let arr2 = arr.filter((item) => item % 3 === 2).sort((a, b) => a - b)
-  let sum = 0
-  for (let i = 0; i < digits.length; i++) {
-    sum += digits[i]
-  }
+  let sum = arr.reduce((pre, cur) => pre + cur, 0)
   if (sum % 3 === 0) {
     return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
   } else if (sum % 3 === 1) {
