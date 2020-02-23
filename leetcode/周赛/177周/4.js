@@ -11,7 +11,7 @@ var largestMultipleOfThree = function(digits) {
     sum += digits[i]
   }
   if (sum % 3 === 0) {
-    return deletePrefixZero(digits.sort((a, b) => b - a).join(''))    
+    return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
   } else if (sum % 3 === 1) {
     if (arr1.length >= 1) {
       for (let i = 0; i < digits.length; i++) {
@@ -20,7 +20,6 @@ var largestMultipleOfThree = function(digits) {
           break
         }
       }
-      return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
     } else if (arr2.length >= 2) {
       for (let i = 0; i < digits.length; i++) {
         if (digits[i] === arr2[0]) {
@@ -30,8 +29,8 @@ var largestMultipleOfThree = function(digits) {
           digits.splice(i, 1)
         }
       }
-      return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
     }
+    return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
   } else if (sum % 3 === 2) {
     if (arr2.length >= 1) {
       for (let i = 0; i < digits.length; i++) {
@@ -40,7 +39,6 @@ var largestMultipleOfThree = function(digits) {
           break
         }
       }
-      return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
     } else if (arr1.length >= 2) {
       for (let i = 0; i < digits.length; i++) {
         if (digits[i] === arr1[0]) {
@@ -50,8 +48,8 @@ var largestMultipleOfThree = function(digits) {
           digits.splice(i, 1)
         }
       }
-      return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
     }
+    return deletePrefixZero(digits.sort((a, b) => b - a).join(''))
   }
   return ''
 }
