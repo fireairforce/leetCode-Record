@@ -17,7 +17,7 @@ var pathSum = function(root, sum) {
   }
   let path = []
   let stack = []
-  function cal(root, expectNumber) {
+  function dfs(root, expectNumber) {
     stack.push(root.val)
     if (
       root.val === expectNumber &&
@@ -27,14 +27,14 @@ var pathSum = function(root, sum) {
       path.push(stack.slice(0))
     } else {
       if (root.left !== null) {
-        cal(root.left, expectNumber - root.val)
+        dfs(root.left, expectNumber - root.val)
       }
       if (root.right !== null) {
-        cal(root.right, expectNumber - root.val)
+        dfs(root.right, expectNumber - root.val)
       }
     }
     stack.pop()
   }
-  cal(root, sum)
+  dfs(root, sum)
   return path
 }
