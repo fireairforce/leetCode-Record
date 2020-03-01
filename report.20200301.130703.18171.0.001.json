@@ -1,0 +1,358 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200301.130703.18171.0.001.json",
+    "dumpEventTime": "2020-03-01T13:07:03Z",
+    "dumpEventTimeStamp": "1583039223802",
+    "processId": 18171,
+    "cwd": "/home/zoomdong/桌面/学习项目/leetCode-Record",
+    "commandLine": [
+      "node",
+      "/home/zoomdong/桌面/学习项目/leetCode-Record/Daily/225. 用队列实现栈.js"
+    ],
+    "nodejsVersion": "v12.5.0",
+    "glibcVersionRuntime": "2.28",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.5.0",
+      "v8": "7.5.288.22-node.14",
+      "uv": "1.29.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.38.0",
+      "napi": "4",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1c",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.5.0/node-v12.5.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.5.0/node-v12.5.0.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.15.0-58-generic",
+    "osVersion": "#64~16.04.1-Ubuntu SMP Wed Aug 7 14:10:35 UTC 2019",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz",
+        "speed": 1609,
+        "user": 17892500,
+        "nice": 64900,
+        "sys": 4317300,
+        "idle": 126739300,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz",
+        "speed": 1609,
+        "user": 17892500,
+        "nice": 64900,
+        "sys": 4317300,
+        "idle": 126739300,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz",
+        "speed": 1609,
+        "user": 17892500,
+        "nice": 64900,
+        "sys": 4317300,
+        "idle": 126739300,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz",
+        "speed": 1609,
+        "user": 17892500,
+        "nice": 64900,
+        "sys": 4317300,
+        "idle": 126739300,
+        "irq": 0
+      }
+    ],
+    "host": "zoomdong-Inspiron-3568"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000acd485",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [node]"
+    },
+    {
+      "pc": "0x00000000009af963",
+      "symbol": "node::OnFatalError(char const*, char const*) [node]"
+    },
+    {
+      "pc": "0x0000000000b06bbe",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [node]"
+    },
+    {
+      "pc": "0x0000000000b06f39",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [node]"
+    },
+    {
+      "pc": "0x0000000000ce3dd5",
+      "symbol": " [node]"
+    },
+    {
+      "pc": "0x0000000000cbd410",
+      "symbol": "v8::internal::Factory::NewUninitializedFixedArray(int, v8::internal::AllocationType) [node]"
+    },
+    {
+      "pc": "0x0000000000c67521",
+      "symbol": " [node]"
+    },
+    {
+      "pc": "0x0000000000c67d2f",
+      "symbol": " [node]"
+    },
+    {
+      "pc": "0x0000000000f6a08e",
+      "symbol": "v8::internal::Runtime_GrowArrayElements(int, unsigned long*, v8::internal::Isolate*) [node]"
+    },
+    {
+      "pc": "0x0000000001315359",
+      "symbol": " [node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2697129984,
+    "totalCommittedMemory": 2664764752,
+    "usedMemory": 2662233640,
+    "availableMemory": 16987120,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 32272,
+        "capacity": 261832,
+        "used": 31960,
+        "available": 229872
+      },
+      "new_space": {
+        "memorySize": 33554432,
+        "committedMemory": 2023824,
+        "capacity": 16757248,
+        "used": 0,
+        "available": 16757248
+      },
+      "old_space": {
+        "memorySize": 1978368,
+        "committedMemory": 1653712,
+        "capacity": 1298512,
+        "used": 1298512,
+        "available": 0
+      },
+      "code_space": {
+        "memorySize": 425984,
+        "committedMemory": 173344,
+        "capacity": 153504,
+        "used": 153504,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 266240,
+        "committedMemory": 238784,
+        "capacity": 168160,
+        "used": 168160,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 1758081024,
+        "committedMemory": 1758081024,
+        "capacity": 1758067168,
+        "used": 1758067168,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3456,
+        "used": 3456,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 902512640,
+        "committedMemory": 902512640,
+        "capacity": 902510880,
+        "used": 902510880,
+        "available": 0
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 3.20442,
+    "kernelCpuSeconds": 0.914978,
+    "cpuConsumptionPercent": 137.313,
+    "maxRss": 2694242304,
+    "pageFaults": {
+      "IORequired": 24,
+      "IONotRequired": 663367
+    },
+    "fsActivity": {
+      "reads": 3568,
+      "writes": 0
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 3.03405,
+    "kernelCpuSeconds": 0.911806,
+    "cpuConsumptionPercent": 131.528,
+    "fsActivity": {
+      "reads": 3568,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "XDG_VTNR": "7",
+    "VSCODE_CLI": "1",
+    "XDG_SESSION_ID": "c2",
+    "CLUTTER_IM_MODULE": "xim",
+    "XDG_GREETER_DATA_DIR": "/var/lib/lightdm-data/zoomdong",
+    "NVM_CD_FLAGS": "",
+    "GPG_AGENT_INFO": "/home/zoomdong/.gnupg/S.gpg-agent:0:1",
+    "SHELL": "/bin/bash",
+    "TERM": "xterm-256color",
+    "VTE_VERSION": "4205",
+    "AMD_ENTRYPOINT": "vs/workbench/services/extensions/node/extensionHostProcess",
+    "QT_LINUX_ACCESSIBILITY_ALWAYS_ON": "1",
+    "WINDOWID": "77594630",
+    "UPSTART_SESSION": "unix:abstract=/com/ubuntu/upstart-session/1000/1438",
+    "GNOME_KEYRING_CONTROL": "",
+    "GTK_MODULES": "gail:atk-bridge:unity-gtk-module",
+    "NVM_DIR": "/home/zoomdong/.nvm",
+    "USER": "zoomdong",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "QT_ACCESSIBILITY": "1",
+    "XDG_SESSION_PATH": "/org/freedesktop/DisplayManager/Session0",
+    "VSCODE_PREVENT_FOREIGN_INSPECT": "true",
+    "XDG_SEAT_PATH": "/org/freedesktop/DisplayManager/Seat0",
+    "SSH_AUTH_SOCK": "/run/user/1000/keyring/ssh",
+    "VSCODE_LOG_STACK": "false",
+    "DEFAULTS_PATH": "/usr/share/gconf/ubuntu.default.path",
+    "ELECTRON_RUN_AS_NODE": "1",
+    "XDG_CONFIG_DIRS": "/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg",
+    "VSCODE_LOGS": "/home/zoomdong/.config/Code/logs/20200229T232646",
+    "PATH": "/home/zoomdong/.nvm/versions/node/v12.5.0/bin:/home/zoomdong/.local/share/umake/bin:/home/zoomdong/bin:/home/zoomdong/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+    "DESKTOP_SESSION": "ubuntu",
+    "_": "/home/zoomdong/.nvm/versions/node/v12.5.0/bin/node",
+    "QT_IM_MODULE": "fcitx",
+    "QT_QPA_PLATFORMTHEME": "appmenu-qt5",
+    "XDG_SESSION_TYPE": "x11",
+    "PWD": "/home/zoomdong/桌面/学习项目/leetCode-Record",
+    "JOB": "gnome-session",
+    "VSCODE_HANDLES_UNCAUGHT_ERRORS": "true",
+    "ELECTRON_NO_ATTACH_CONSOLE": "1",
+    "XMODIFIERS": "@im=fcitx",
+    "GNOME_KEYRING_PID": "",
+    "LANG": "zh_CN.UTF-8",
+    "GDM_LANG": "zh_CN",
+    "MANDATORY_PATH": "/usr/share/gconf/ubuntu.mandatory.path",
+    "IM_CONFIG_PHASE": "1",
+    "COMPIZ_CONFIG_PROFILE": "ubuntu",
+    "GDMSESSION": "ubuntu",
+    "SESSIONTYPE": "gnome-session",
+    "GTK2_MODULES": "overlay-scrollbar",
+    "HOME": "/home/zoomdong",
+    "XDG_SEAT": "seat0",
+    "SHLVL": "3",
+    "PIPE_LOGGING": "true",
+    "APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL": "true",
+    "LANGUAGE": "zh_CN:zh",
+    "VSCODE_IPC_HOOK_EXTHOST": "/tmp/vscode-ipc-b80fbcc7-fa00-429d-a861-5cb46ccaa632.sock",
+    "VSCODE_NLS_CONFIG": "{\"locale\":\"zh-cn\",\"availableLanguages\":{},\"_languagePackSupport\":true}",
+    "GNOME_DESKTOP_SESSION_ID": "this-is-deprecated",
+    "UPSTART_INSTANCE": "",
+    "UPSTART_EVENTS": "started starting",
+    "XDG_SESSION_DESKTOP": "ubuntu",
+    "LOGNAME": "zoomdong",
+    "VSCODE_IPC_HOOK": "/run/user/1000/vscode-af5d0db1-1.37.1-main.sock",
+    "QT4_IM_MODULE": "fcitx",
+    "XDG_DATA_DIRS": "/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:abstract=/tmp/dbus-eECLFqEKF1",
+    "NVM_BIN": "/home/zoomdong/.nvm/versions/node/v12.5.0/bin",
+    "LESSOPEN": "| /usr/bin/lesspipe %s",
+    "INSTANCE": "Unity",
+    "UPSTART_JOB": "unity-settings-daemon",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "DISPLAY": ":0",
+    "VERBOSE_LOGGING": "true",
+    "XDG_CURRENT_DESKTOP": "Unity",
+    "GTK_IM_MODULE": "fcitx",
+    "LESSCLOSE": "/usr/bin/lesspipe %s %s",
+    "XAUTHORITY": "/home/zoomdong/.Xauthority"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 65536,
+      "hard": 65536
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 30674,
+      "hard": 30674
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/lib/x86_64-linux-gnu/librt.so.1",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2"
+  ]
+}
