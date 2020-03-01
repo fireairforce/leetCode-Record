@@ -1,56 +1,38 @@
-/**
- * @param {string[]} votes
- * @return {string}
- */
 var rankTeams = function(votes) {
-  if (votes.length === 1) {
-    return votes.join('')
-  }
-  let count = []
+  if (votes.length === 0) return ''
+
+  let map = [],
+    ans = votes[0].split('')
   for (let i = 0; i < votes.length; i++) {
-    for (let j = 0; j < votes[i].length; j++) {
-      count[j] = {}
-    }
-  }
-  for (let i = 0; i < votes.length; i++) {
-    votes[i] = votes[i].split('')
-    for (let j = 0; j < votes[i].length; j++) {
-      if (count[j][votes[i][j]]) {
-        count[j][votes[i][j]]++
+    let every = votes[i]
+    let rank = 1
+    for (let j = 0; j < every.length; j++) {
+      if (map[rank] === undefined) map[rank] = {}
+      let c = every.charAt(j)
+      if (map[rank][c] === undefined) {
+        map[rank][c] = 1
       } else {
-        count[j][votes[i][j]] = 1
+        map[rank][c]++
       }
+      rank++
     }
   }
-
-  let str = ''
-  for (let i = 0; i < count.length; i++) {
-    for (let key in count[i]) {
-      str += key
-    }
-  }
-  for (let i = 0; i < count.length; i++) {
-    let arr = Object.keys(count[i]).sort((a, b) => {
-      if (count[i][a] === count[i][b]) {
-        return a.charCodeAt() - b.charCodeAt()
+  ans.sort((a, b) => {
+    let rank = 1,
+      res = 0
+    while (res === 0) {
+      if (map[rank] === undefined) {
+        if (a < b) res = -1
+        if (a > b) res = 1
+      } else {
+        let l = map[rank][a] || 0,
+          r = map[rank][b] || 0
+        if (l > r) res = -1
+        if (l < r) res = 1
       }
-      return count[i][b] - count[i][a]
-    })
-  }
-  let res = []
-  for (let i = 0; i < count.length; i++) {
-    for (let j = 0; j < count[i].length; j++) {
-      if (!res.includes(count[i][j])) {
-        res.push(count[i][j])
-      }
+      rank++
     }
-  }
-  return res.join('')
+    return res
+  })
+  return ans.join('')
 }
-
-// console.log(rankTeams(['ABC', 'ACB', 'ABC', 'ACB', 'ACB']))
-console.log(rankTeams(['WXYZ', 'XYZW']))
-// output XWYZ
-// console.log(rankTeams(['ZMNAGUEDSJYLBOPHRQICWFXTVK']))
-// console.log(rankTeams(['BCA', 'CAB', 'CBA', 'ABC', 'ACB', 'BAC']))
-// console.log(rankTeams(['M', 'M', 'M', 'M']))
