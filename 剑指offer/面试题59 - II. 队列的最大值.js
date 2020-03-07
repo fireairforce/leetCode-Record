@@ -1,33 +1,41 @@
 var MaxQueue = function() {
-
-};
+  this.queue = []
+  this.maxQueue = []
+}
 
 /**
  * @return {number}
  */
 MaxQueue.prototype.max_value = function() {
+  return this.queue.length ? this.maxQueue[0] : -1
+}
 
-};
-
-/** 
+/**
  * @param {number} value
  * @return {void}
  */
 MaxQueue.prototype.push_back = function(value) {
-
-};
+  this.queue.unshift(value)
+  while (
+    this.maxQueue.length &&
+    value > this.maxQueue[this.maxQueue.length - 1]
+  ) {
+    this.maxQueue.pop()
+  }
+  this.maxQueue.push(value)
+}
 
 /**
  * @return {number}
  */
 MaxQueue.prototype.pop_front = function() {
+  if (this.queue.length === 0) {
+    return -1
+  }
+  let val = this.queue.pop()
+  if (this.maxQueue[0] === val) {
+    this.maxQueue.shift()
+  }
+  return val
+}
 
-};
-
-/**
- * Your MaxQueue object will be instantiated and called as such:
- * var obj = new MaxQueue()
- * var param_1 = obj.max_value()
- * obj.push_back(value)
- * var param_3 = obj.pop_front()
- */
