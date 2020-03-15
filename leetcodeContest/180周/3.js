@@ -18,16 +18,16 @@ var balanceBST = function(root) {
     qx(root.right)
   }
   qx(root)
-  return buildTree(res,0, res.length - 1)
+  return buildTree(res, 0, res.length - 1)
 }
 
 const buildTree = (res, l, r) => {
   if (l > r) {
-    return null;
+    return null
   }
   let mid = Math.floor((l + r) / 2)
-  let root = new TreeNode(res[mid]);
-  root.left = buildTree(root, l , mid - 1);
-  root.right = buildTree(root, mid + 1, r);
-  return root;
+  let root = new TreeNode(res[mid])
+  root.left = buildTree(root, l, mid - 1)
+  root.right = buildTree(root, mid + 1, r)
+  return root
 }
