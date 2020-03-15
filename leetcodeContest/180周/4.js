@@ -7,5 +7,4 @@
  */
 var maxPerformance = function(n, speed, efficiency, k) {
 
-
 }
