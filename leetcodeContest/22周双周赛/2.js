@@ -4,60 +4,71 @@
  * @return {number}
  */
 var maxNumberOfFamilies = function(n, reservedSeats) {
-  reservedSeats.sort((a, b) => {
-    if (a[0] === b[0]) {
-      return a[1] - b[1]
-    }
-    return a[0] - b[0]
-  })
-  reservedSeats.push(-1, -1)
-  let hash = {}
-  let arr = []
-  for (let i = 0; i < reservedSeats.length; i++) {
-    if (!hash[reservedSeats[i][0]]) {
-      let flag1 = 0
-      let flag2 = 0
-      let flag3 = 0
-      if (arr.length) {
-        for (let j = 0; j < arr.length; j++) {
-          if (arr[j] >= 2 && arr[j] <= 3) {
-            flag1 = 1
-          }
-          if (arr[j] >= 4 && arr[j] <= 5) {
-            flag1 = 1
-            flag3 = 1
-          }
-          if (arr[j] >= 6 && arr[j] <= 7) {
-            flag2 = 1
-            flag3 = 1
-          }
-          if (arr[j] >= 8 && arr[j] <= 9) {
-            flag2 = 1
-          }
+  if (n === 0) {
+    return 0
+  }
+  let count = n * 2
+  let map = []
+  while (reservedSeats.length > 0) {
+    const [x, y] = reservedSeats.pop()
+    if (y === 1 || y === 10) {
+      continue
+    } else {
+      if (map[x] === undefined) {
+        if (y === 2 || y === 3) {
+          // 中，右
+          map[x] = 6
+        } else if (y === 8 || y === 9) {
+          // 中，左
+          map[x] = 5
+        } else if (y === 4 || y === 5) {
+          // 右
+          map[x] = 3
+        } else if (y === 6 || y === 7) {
+          // 左
+          map[x] = 4
         }
-        if (flag1 + flag2 === 1) {
-          hash[reservedSeats[i - 1][0]] = 1
-        } else if (flag1 + flag2 === 2 && flag3 === 0) {
-          hash[reservedSeats[i - 1][0]] = 1
-        } else if (flag2 + flag2 === 2) {
-          hash[reservedSeats[i - 1][0]] = 0
+        count--
+      } else if (map[x] === 2) {
+        //  中
+        if (y === 4 || y === 5 || y === 6 || y === 7) {
+          map[x] = 0
+          count--
+        }
+      } else if (map[x] === 3) {
+        // 右
+        if (y === 6 || y === 7 || y === 8 || y === 9) {
+          map[x] = 0
+          count--
+        }
+      } else if (map[x] === 4) {
+        // 左
+        if (y === 2 || y === 3 || y === 4 || y === 5) {
+          map[x] = 0
+          count--
+        }
+      } else if (map[x] === 5) {
+        // 中，左
+        if (y === 2 || y === 3) {
+          map[x] = 2
+        } else if (y === 6 || y === 7) {
+          map[x] = 4
+        } else if (y === 4 || y === 5) {
+          map[x] = 0
+          count--
+        }
+      } else if (map[x] === 6) {
+        // 中，右
+        if (y === 4 || y === 5) {
+          map[x] = 3
+        } else if (y === 6 || y === 7) {
+          map[x] = 0
+          count--
+        } else if (y === 8 || y === 9) {
+          map[x] = 2
         }
       }
-      arr = []
-      hash[reservedSeats[i][0]] = 2
-      arr.push(reservedSeats[i][1])
-    } else {
-      arr.push(reservedSeats[i][1])
     }
   }
-  console.log(hash)
-  let sum = 0
-  for (let i = 1; i <= n; i++) {
-    if (hash[i] === undefined) {
-      sum += 2
-    } else {
-      sum += hash[i]
-    }
-  }
-  return sum
+  return count
 }
