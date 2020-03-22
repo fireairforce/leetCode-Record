@@ -24,22 +24,10 @@ var hasValidPath = function(grid) {
   const RIGHT_OR_BOTTOM = 4
   const LEFT_OR_TOP = 5
   const RIGHT_OR_TOP = 6
-  const left = new Set()
-  left.add(1)
-  left.add(3)
-  left.add(5)
-  const right = new Set()
-  right.add(1)
-  right.add(4)
-  right.add(6)
-  const top = new Set()
-  top.add(2)
-  top.add(5)
-  top.add(6)
-  const bottom = new Set()
-  bottom.add(2)
-  bottom.add(3)
-  bottom.add(4)
+  const left = new Set([1,3,5])
+  const right = new Set([1,4,6])
+  const top = new Set([2,5,6])
+  const bottom = new Set([2,3,4])
   let m = grid.length,
     n = grid[0].length
   let queue = [[0, 0]]
