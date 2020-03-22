@@ -3,12 +3,12 @@
  * @return {number}
  */
 var minIncrementForUnique = function(A) {
-  let hash = Array(40001).fill(0)
+  let hash = Array(50001).fill(0)
   for (let i = 0; i < A.length; i++) {
     hash[A[i]]++
   }
   let sum = 0
-  for (let i = 0; i < 40001; i++) {
+  for (let i = 0; i < 50001; i++) {
     if (hash[i] > 1) {
       sum += hash[i] - 1
       hash[i + 1] += hash[i] - 1

@@ -2,6 +2,20 @@
  * @param {number[][]} grid
  * @return {boolean}
  */
+
+const judge = (x, y, m, n, visited) => {
+  if (
+    x < 0 ||
+    y < 0 ||
+    x >= m ||
+    y >= n ||
+    visited.indexOf(`${x}${y}`) !== -1
+  ) {
+    return false
+  }
+  return true
+}
+
 var hasValidPath = function(grid) {
   const LEFT_OR_RIGHT = 1
   const TOP_OR_BOTTOM = 2
@@ -17,121 +31,65 @@ var hasValidPath = function(grid) {
   let m = grid.length,
     n = grid[0].length
   let queue = [[0, 0]]
-  let visited = new Set()
+  let visited = []
   while (queue.length) {
     let [x, y] = queue.pop()
-    visited.add([x, y])
+    visited.push(`${x}${y}`)
     if (grid[x][y] === LEFT_OR_RIGHT) {
-      if (
-        !visited.has([x][y - 1]) && 0<=x&&0<=y-1 && 
-        x < m &&
-        y - 1 < n &&
-        left.indexOf(grid[x][y - 1]) !== -1
-      ) {
+      if (judge(x, y - 1, m, n, visted) && left.indexOf(grid[x][y-1]) !== -1) {
         queue.push([x, y - 1])
       }
-      if (
-        !visited.has([x][y + 1]) &&0<=x&&0<=y+1 &&
-        x < m &&
-        y + 1 < n &&
-        left.indexOf(grid[x][y + 1]) !== -1
-      ) {
+      if (judge(x, y + 1, m, n, visted)) {
         queue.push([x, y + 1])
       }
     }
     if (grid[x][y] === TOP_OR_BOTTOM) {
-      if (
-        !visited.has([x - 1][y]) &&0<=x-1&&0<=y &&
-        x - 1 < m &&
-        y < n &&
-        left.indexOf(grid[x - 1][y]) !== -1
-      ) {
+      if (judge(x - 1, y, m, n, visted)) {
         queue.push([x - 1, y])
       }
-      if (
-        !visited.has([x + 1][y]) &&0<=x+1&&0<=y &&
-        x + 1 < m &&
-        y < n &&
-        left.indexOf(grid[x + 1][y]) !== -1
-      ) {
+      if (judge(x + 1, y, m, n, visted)) {
         queue.push([x + 1, y])
       }
     }
     if (grid[x][y] === LEFT_OR_BOTTOM) {
-      if (
-        !visited.has([x][y - 1]) &&0<=x&&0<=y-1 &&
-        x < m &&
-        y - 1 < n &&
-        left.indexOf(grid[x][y - 1]) !== -1
-      ) {
-        queue.push([x, y - 1])
+      if (judge(x, y - 1, m, n, visted)) {
+        queue.push([x, y + 1])
       }
-      if (
-        !visited.has([x + 1][y]) &&0<=x+1&&0<=y &&
-        x + 1 < m &&
-        y < n &&
-        left.indexOf(grid[x + 1][y]) !== -1
-      ) {
+      if (judge(x + 1, y, m, n, visted)) {
         queue.push([x + 1, y])
       }
     }
     if (grid[x][y] === RIGHT_OR_BOTTOM) {
-      if (
-        !visited.has([x][y + 1]) &&0<=x&&0<=y+1 &&
-        x < m &&
-        y + 1 < n &&
-        left.indexOf(grid[x][y + 1]) !== -1
-      ) {
+      if (judge(x, y + 1, m, n, visted)) {
         queue.push([x, y + 1])
       }
-      if (
-        !visited.has([x + 1][y]) &&0<=x+1&&0<=y &&
-        x + 1 < m &&
-        y < n &&
-        left.indexOf(grid[x + 1][y]) !== -1
-      ) {
+      if (judge(x + 1, y, m, n, visted)) {
         queue.push([x + 1, y])
       }
     }
     if (grid[x][y] === LEFT_OR_TOP) {
-      if (
-        !visited.has([x][y - 1]) &&0<=x&&0<=y-1 &&
-        x < m &&
-        y - 1 < n &&
-        left.indexOf(grid[x][y - 1]) !== -1
-      ) {
-        queue.push([x, y - 1])
+      if (judge(x, y - 1, m, n, visted)) {
+        queue.push([x, y + 1])
       }
-      if (
-        !visited.has([x - 1][y]) &&0<=x-1&&0<=y &&
-        x - 1 < m &&
-        y < n &&
-        left.indexOf(grid[x - 1][y]) !== -1
-      ) {
+      if (judge(x - 1, y, m, n, visted)) {
         queue.push([x - 1, y])
       }
     }
     if (grid[x][y] === RIGHT_OR_TOP) {
-      if (
-        !visited.has([x][y + 1]) &&0<=x&&0<=y+1 &&
-        x < m &&
-        y + 1 < n &&
-        left.indexOf(grid[x][y + 1]) !== -1
-      ) {
+      if (judge(x, y + 1, m, n, visted)) {
         queue.push([x, y + 1])
       }
-      if (
-        !visited.has([x - 1][y]) &&0<=x-1&&0<=y &&
-        x - 1 < m &&
-        y < n &&
-        left.indexOf(grid[x - 1][y]) !== -1
-      ) {
+      if (judge(x - 1, y, m, n, visted)) {
         queue.push([x - 1, y])
       }
     }
   }
-  console.log(visited);
-  return visited.has([m-1,n-1])
+  console.log(visted);
 }
 
-console.log(hasValidPath([[2,4,3],[6,5,2]]));
+console.log(
+  hasValidPath([
+    [2, 4, 3],
+    [6, 5, 2],
+  ]),
+)
