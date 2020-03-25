@@ -3,12 +3,23 @@
  * @return {number}
  */
 var longestValidParentheses = function(s) {
-  let len = s.length
-  for (let i = 0; i < len - 1; i++) {
-    for (let j = i + 1; j < len; j++) {
-      
+  let max = 0
+  const stack = []
+  stack.push(-1)
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === '(') {
+      stack.push(i)
+    } else {
+      stack.pop()
+      if (stack.length === 0) {
+        stack.push(i)
+      } else {
+        max = Math.max(max, i - stack[stack.length - 1])
+      }
     }
   }
+  return max
 }
 
-const vaild = () => {}
+// console.log(longestValidParentheses('(()'))
+// console.log(longestValidParentheses(')()())'))
