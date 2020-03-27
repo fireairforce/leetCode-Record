@@ -36,11 +36,7 @@ var hasGroupsSizeX = function (deck) {
                 }
             }
         }
-
         return dst.every(item=>{
-            // if(item.length%min===0&&item.length/min!==item.length){
-            //     return true
-            // }
             if(gcd(item.length,min)!==1){
                 return true;
             }
