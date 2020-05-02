@@ -1,8 +1,13 @@
 /**
- * Initialize your data structure here.
+Initialize your data structure here.
  */
+// followMap 用户关注列表
+// postMap 用户推文列表
+// latestMap 推文的自增id
 var Twitter = function() {
-
+  this.followMap = {}
+  this.postMap = new Map()
+  this.latestPostId = 0
 };
 
 /**
@@ -12,7 +17,12 @@ var Twitter = function() {
  * @return {void}
  */
 Twitter.prototype.postTweet = function(userId, tweetId) {
-
+  const postTime = this.latestPostId ++
+  let tweetList = [{ tweetId, postTime }]
+  if (this.postMap.has(userId)) {
+    tweetList = tweetList.concat(this.postMap.get(userId))
+  }
+  this.postMap.set(userId, tweetList)
 };
 
 /**
@@ -21,7 +31,16 @@ Twitter.prototype.postTweet = function(userId, tweetId) {
  * @return {number[]}
  */
 Twitter.prototype.getNewsFeed = function(userId) {
-
+  const followeeIdList = this.followMap[userId] ? [...this.followMap[userId]] : []
+  const tweetLists = []
+  const userIds = [...new Set(followeeIdList.concat([userId]))]
+  userIds.forEach(uid => {
+    if (this.postMap.has(uid)) {
+      tweetLists.push(...this.postMap.get(uid).slice(0, 10))
+    }
+  })
+  tweetLists.sort((a,b) => b.postTime - a.postTime)
+  return tweetLists.slice(0, 10).map(item => item.tweetId)
 };
 
 /**
@@ -31,7 +50,11 @@ Twitter.prototype.getNewsFeed = function(userId) {
  * @return {void}
  */
 Twitter.prototype.follow = function(followerId, followeeId) {
-
+  if (this.followMap[followerId]) {
+    this.followMap[followerId].add(followeeId)
+  } else {
+    this.followMap[followerId] = new Set([followeeId])
+  }
 };
 
 /**
@@ -41,14 +64,7 @@ Twitter.prototype.follow = function(followerId, followeeId) {
  * @return {void}
  */
 Twitter.prototype.unfollow = function(followerId, followeeId) {
-
+  if (this.followMap[followerId]) {
+    this.followMap[followerId].delete(followeeId)
+  }
 };
-
-/**
- * Your Twitter object will be instantiated and called as such:
- * var obj = new Twitter()
- * obj.postTweet(userId,tweetId)
- * var param_2 = obj.getNewsFeed(userId)
- * obj.follow(followerId,followeeId)
- * obj.unfollow(followerId,followeeId)
- */
