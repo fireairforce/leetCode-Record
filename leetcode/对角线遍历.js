@@ -37,7 +37,7 @@ var findDiagonalOrder = function(matrix) {
   }
   return res;
 };
-
+console.log(findDiagonalOrder([[1,2,3,4,5],[4,5,6,7,9]]));
 /**
  *  1 2 3 4 5
  *  4 5 6 7 9
