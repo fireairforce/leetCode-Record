@@ -20,7 +20,7 @@ var maximalSquare = function(matrix) {
     }
   }
   for (let i = 1; i < rows + 1; i++) {
-    for (let j = 1; j < col + 1; j++) {
+    for (let j = 1; j < cols + 1; j++) {
       if (matrix[i - 1][j - 1] === "1") {
         dp[i][j] =
           1 + Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1]));
