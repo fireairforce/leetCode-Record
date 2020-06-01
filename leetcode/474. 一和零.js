@@ -8,7 +8,7 @@ var findMaxForm = function (strs, m, n) {
   // 使用 m 个 0 && n 个 1 用来拼凑出 存在Array数组中字符串的最大数量
   // dp[i][j] 用来表示
   // arr用来存每个元素需要0-1数目
-  const count = (str) => {
+  const countNum = (str) => {
     str = str.split('')
     let countZero = 0
     let countOne = 0
@@ -30,7 +30,7 @@ var findMaxForm = function (strs, m, n) {
   }
   // dp[i][j] 表示 i 个 0 和 j 和 1 能存下的最多字符串的数目
   for (let item of strs) {
-    let countRes = count(item)
+    let countRes = countNum(item)
     // console.log('countRes: ', countRes);
     for (let i = m; i >= 0; i--) {
       for (let j = n; j >= 0; j--) {
