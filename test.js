@@ -1,13 +1,24 @@
-const test = [{ a: 'test' }, { a: 'test1' }]
-
-const test2 = [
-  { type: 'symbol', text: 'IFamily', sourceFile: 'test/test.ts' },
-  { type: 'punctuation', text: '[' },
-  { type: 'punctuation', text: ']' },
-]
-// res = test.reduce((a1,a2)=> a1.a + a2.a)
-res = test2.reduce((a1, a2) => {
-  console.log(a1, a2)
-  return a1.text + a2.text
+data.forEach((item) => {
+  if (item.id === tempData.firstCategoryId) {
+    this.industryName = item.name
+    this.banEntryFlag = item.banEntry
+    this.needCertification = item.needCertification
+    item.children.forEach((obj) => {
+      if (obj.id === tempData.secondCategoryId) {
+        this.industryName += '/' + obj.name
+        this.needCertification = obj.needCertification
+      }
+    })
+  }
 })
-console.log(res)
+
+
+data.filter(item => item.id === tempData.firstCategoryId).forEach(item => {
+  this.industryName = item.name
+  this.banEntryFlag = item.banEntry
+  this.needCertification = item.needCertification
+  item.children.filter(obj => obj.id === tempData.secondCategoryId).forEach(obj => {
+    this.industryName += '/' + obj.name
+    this.needCertification = obj.needCertification
+  })
+})
