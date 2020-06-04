@@ -3,17 +3,25 @@
  * @param {number[]} coins
  * @return {number}
  */
-var change = function(amount, coins) {
-  if (amount === 0) {
-    return 1;
-  }
-  const dp = [1].concat(Array(amount).fill(0));
-  for (let j = 0; j < coins.length; j++) {
-    for (let i = 1; i < amount + 1; i++) {
-        if(i - coins[j] >= 0) {
-            dp[i] = dp[i] + dp[i - coins[j]];
-        }
+var change = function (amount, coins) {
+  let len = coins.length
+  let dp = []
+  for (let i = 0; i <= len; i++) {
+    dp[i] = []
+    for (let j = 0; j <= amount; j++) {
+      dp[i][j] = 0
+      dp[i][0] = 1
     }
   }
-  return dp[dp.length - 1];
-};
+  for (let i = 1; i <= len; i++) {
+    for (let j = 1; j <= amount; j++) {
+      if (j >= coins[i - 1]) {
+        // 注意这里如果使用了硬币 i ,那么此时的 dp值为 dp[i][j-coins[i-1]]
+        dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i - 1]]
+      } else {
+        dp[i][j] = dp[i - 1][j]
+      }
+    }
+  }
+  return dp[len][amount]
+}
