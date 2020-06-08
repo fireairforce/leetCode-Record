@@ -6,7 +6,7 @@
  */
 var findLadders = function (beginWord, endWord, wordList) {
   let queue = []
-  let visited = new Map()
+  let visited = new Set()
   if (!wordList.includes(endWord)) {
     return []
   }
@@ -23,7 +23,7 @@ var findLadders = function (beginWord, endWord, wordList) {
     return count === 1
   }
   queue.push(beginWord)
-  visited.set(beginWord, 1)
+  visited.add(beginWord)
   let res1 = []
   let step = 1
   let flag = false
@@ -38,7 +38,7 @@ var findLadders = function (beginWord, endWord, wordList) {
       }
       for (let i = 0; i < wordList.length; i++) {
         if (!visited.has(wordList[i]) && compareStr(item, wordList[i])) {
-          visited.set(wordList[i], 1)
+          visited.add(wordList[i])
           queue.push(wordList[i])
         }
       }
@@ -48,11 +48,10 @@ var findLadders = function (beginWord, endWord, wordList) {
     }
     step++
   }
-
   queue = []
-  visited = new Map()
+  visited = new Set()
   queue.push(endWord)
-  visited.set(endWord, 1)
+  visited.add(endWord)
   step = 1
   let flag2 = false
   let res2 = []
@@ -67,7 +66,7 @@ var findLadders = function (beginWord, endWord, wordList) {
       }
       for (let i = 0; i < wordList.length; i++) {
         if (!visited.has(wordList[i]) && compareStr(item, wordList[i])) {
-          visited.set(wordList[i], 1)
+          visited.add(wordList[i])
           queue.push(wordList[i])
         }
       }
@@ -84,8 +83,8 @@ var findLadders = function (beginWord, endWord, wordList) {
 
   res2 = res2.reverse()
   let res = []
-  for (let i = 0;i<res2.length;i++) {
-    res[i]= []
+  for (let i = 0; i < res2.length; i++) {
+    res[i] = []
     for (let item of res1[i]) {
       if (res2[i].indexOf(item) !== -1 && !res[i].includes(item)) {
         res[i].push(item)
@@ -107,7 +106,7 @@ var findLadders = function (beginWord, endWord, wordList) {
   let result = []
   const backtrack = (current, target, wordRes, path) => {
     if (path.length > step) {
-      return;
+      return
     }
     if (current === target) {
       result.push([...path])
@@ -117,10 +116,10 @@ var findLadders = function (beginWord, endWord, wordList) {
       if (i <= hash.get(current)) {
         continue
       }
-      for (let j = 0; j < wordRes[i].length ; j++) {
+      for (let j = 0; j < wordRes[i].length; j++) {
         if (
-          compareStr(current, wordRes[i][j])
-          && !path.includes(wordRes[i][j])
+          compareStr(current, wordRes[i][j]) &&
+          !path.includes(wordRes[i][j])
         ) {
           path.push(wordRes[i][j])
           backtrack(wordRes[i][j], target, wordRes, path)
@@ -135,11 +134,10 @@ var findLadders = function (beginWord, endWord, wordList) {
       return result
     }
   } else {
-    return result;
+    return result
   }
 }
 
-console.log(findLadders(
-  "hot",
-"dog",
-["hot","dog"]));
+// console.log(
+//   findLadders('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog']),
+// )
