@@ -2,34 +2,31 @@
  * @param {string[]} names
  * @return {string[]}
  */
-var getFolderNames = function(names) {
-  let map = new Map()
+var getFolderNames = function (names) {
+  // 开两个map,map1用来记录原始里面有哪些文件，map2用来记录文件名已经到编号多少了
+  let mp1 = new Map()
+  let mp2 = new Map()
+  for (let name of names) {
+    // 记录某个文件名的后缀
+    mp2.set(name, 1)
+  }
   let res = []
-  const solve = (name, index) => {
-    if (map.has(name)) {
-      // 如果现在这个文件map里面已经有了
-      if(!name.includes('(')) {
-        solve(`${name}(${index + 1})`, index + 1)
-      } else {
-        // 如果是已经有括号的,分本来就有括号的
-        if (index !== 0) {
-          let num = name.split(')').join('').split('(')
-          
-          let index = Number(num[num.length - 1])
-          solve()
-        } else {
-           solve(`${name}(1)`, 1)
+  for (let name of names) {
+    if (mp1.has(name)) {
+      for (let i = mp2.get(name); i < names.length; i++) {
+        if (!mp1.has(`${name}(${i})`)) {
+          res.push(`${name}(${i})`)
+          mp1.set(`${name}(${i})`, 1)
+          mp2.set(name, i + 1)
+          break;
         }
       }
     } else {
       res.push(name)
-      map.set(name, 1)
+      mp1.set(name, 1)
     }
   }
-  for (let name of names) {
-    solve(name, 0)
-  }
-  return res;
-};
+  return res
+}
 
-console.log(getFolderNames(["onepiece","onepiece(1)","onepiece(2)","onepiece(3)","onepiece"]));
+// console.log(getFolderNames(["kaido","kaido(1)","kaido","kaido(1)","kaido(2)"]));
