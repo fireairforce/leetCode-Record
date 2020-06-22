@@ -15,3 +15,7 @@ EventEmitter.prototype.addListener = function (type, fn, once = false) {
     handler.push(wrapCallback(fn, once))
   }
 }
+
+EventEmitter.prototype.once = function (type, fn) {
+  this.addListener(type, fn, true)
+}
