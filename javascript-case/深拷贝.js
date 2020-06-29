@@ -7,3 +7,12 @@ function deepClone(obj) {
   }
   return copy;
 }
+
+const deepClone = (obj) => {
+  let copy = obj instanceof Array ? [] : {}
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      copy[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+    }
+  }
+}
