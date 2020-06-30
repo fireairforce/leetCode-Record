@@ -12,7 +12,7 @@ const deepClone = (obj) => {
   let copy = obj instanceof Array ? [] : {}
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      copy[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+      copy[key] = Object.prototype.toString().call(obj[key]) === ['object Object'] ||  Object.prototype.toString().call(obj[key]) === ['object Array']? deepClone(obj[key]) : obj[key]
     }
   }
 }
