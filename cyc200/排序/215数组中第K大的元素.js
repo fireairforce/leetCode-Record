@@ -19,7 +19,8 @@ var findKthLargest = function (nums, k) {
   }
 };
 
-let partition = (a, l, h) => {
+// 返回一个index
+const partition = (a, l, h) => {
   let i = l,
     j = h + 1;
   while (true) {
