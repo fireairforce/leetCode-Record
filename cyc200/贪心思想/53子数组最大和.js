@@ -15,3 +15,4 @@ var maxSubArray = function (nums) {
   return dp.sort((a,b)=>b-a)[0];
 };
 // console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]));
+// console.log(maxSubArray([1,2,5,-7,8,-10,13]));

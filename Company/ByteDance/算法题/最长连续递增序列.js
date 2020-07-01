@@ -20,3 +20,5 @@ var findLengthOfLCIS = function(nums) {
   }
   return max;
 };
+
+console.log(findLengthOfLCIS([1,2,5,-7,8,-10,13]));
