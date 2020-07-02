@@ -1,0 +1,33 @@
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var restoreIpAddresses = function (s) {
+  let res = []
+  const backtrak = (list, str) => {
+    // 边界条件
+    // 不满足条件的几组情况
+    if (
+      (list.length === 4 && str.length !== 0) ||
+      list.length > 4 ||
+      (list.length < 4 && str.length === 0)
+    ) {
+      return
+    }
+    // 满足条件的一组ip
+    if (list.length === 4 && str.length === 0) {
+      res.push(list.join('.'))
+      return
+    }
+    backtrak([...list, str[0]], str.slice(1))
+    if (str[0] !== 0 && str.length > 1) {
+      backtrak([...list, str.slice(0, 2)], str.slice(2))
+    }
+    // 按照条件去进行一个回溯
+    if (str[0] !== 0 && parseInt(str.slice(0, 3)) <= 255 && str.length > 2) {
+      backtrak([...list, str.slice(0, 3)], str.slice(3))
+    }
+  }
+  backtrak([], s)
+  return res
+}
