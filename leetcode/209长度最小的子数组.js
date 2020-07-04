@@ -22,4 +22,4 @@ var minSubArrayLen = function(s, nums) {
   }
   return len;
 };
-// console.log(minSubArrayLen(7,[1,2,3,4,2,2]));
+console.log(minSubArrayLen(7,[1,2,3,4,2,2]));
