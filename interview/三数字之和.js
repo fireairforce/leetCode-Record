@@ -5,6 +5,7 @@ const solve = (arr) => {
   arr.sort((a, b) => a - b)
   let len = arr.length;
   let res = []
+  // 总体时间复杂度是 o(n^2)
   for (let i = 0; i < len; i++) {
     if (i > 0 && arr[i] === arr[i - 1]) {
       continue;
@@ -17,12 +18,13 @@ const solve = (arr) => {
       } else if (r === i) {
         r--
       } else if (arr[l] + arr[r] + arr[i] === 0) {
-        res = [...res, [arr[l], arr[r], arr[i]]]
-        while (arr[l] === arr[l + 1]) {
+        res.push([arr[l], arr[r], arr[i]])
+        // 注意跳一下重复的数字喔～
+        while (arr[l] === arr[l + 1] && l < r) {
           l++
         }
         l++;
-        while (arr[r] === arr[r - 1]) {
+        while (arr[r] === arr[r - 1] && l < r) {
           r--;
         }
         r--
