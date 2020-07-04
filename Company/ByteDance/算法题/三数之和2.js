@@ -40,5 +40,4 @@ var threeSum = function(nums) {
   }
   return list;
 };
-// console.log("qaq");
 console.log(threeSum([0, 2, -2, -1]));
