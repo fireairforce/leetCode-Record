@@ -6,7 +6,6 @@ var restoreIpAddresses = function (s) {
   let res = []
   const backtrak = (list, str) => {
     // 边界条件
-    // 不满足条件的几组情况
     if (
       (list.length === 4 && str.length !== 0) ||
       list.length > 4 ||
@@ -23,6 +22,7 @@ var restoreIpAddresses = function (s) {
     backtrak([...list, str[0]], str.slice(1))
     // 非单独，但需要首位不为0
     if (str[0] !== '0' && str.length > 1) {
+      // list里面push一些值
       backtrak([...list, str.slice(0, 2)], str.slice(2))
     }
     // 按照条件去进行一个回溯
