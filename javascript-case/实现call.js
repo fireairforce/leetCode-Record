@@ -26,7 +26,9 @@ Function.prototype.Call2 = function(context = window, ...args) {
   }
   context = context || window;
   context.fn = this;
+  // call 函数要执行一次的
   let result = context.fn(...args);
+  // 执行完成之后删除掉就可了
   delete context.fn;
   return result;
 };

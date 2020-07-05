@@ -24,6 +24,7 @@ Function.prototype.Myapply = function(context = window, args) {
   }
   context = context || window;
   context.fn = this;
+  // 相较于 call 多了个判断数组的过程
   if (Array.isArray(args)) {
     result = context.fn(...args);
   } else {
