@@ -18,6 +18,7 @@ var restoreIpAddresses = function (s) {
       res.push(list.join('.'))
       return
     }
+    // 一种有三种回溯情况
     // 单独要首位的情况
     backtrak([...list, str[0]], str.slice(1))
     // 非单独，但需要首位不为0
