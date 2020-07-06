@@ -10,3 +10,13 @@ const debounce = (fn, delay) => {
 };
 
 // 防抖可以用于多次提交的按钮，只执行最后提交的一次
+// “防抖重在清零”
+const debounce = (f, delay) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      f(...args)
+    }, delay)
+  }
+}
