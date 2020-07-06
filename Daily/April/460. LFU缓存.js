@@ -1,6 +1,3 @@
-/**
- * @param {number} capacity
- */
 var LFUCache = function (capacity) {
   this.size = capacity
   // 记录 key
@@ -9,10 +6,6 @@ var LFUCache = function (capacity) {
   this.useMap = new Map()
 }
 
-/**
- * @param {number} key
- * @return {number}
- */
 LFUCache.prototype.get = function (key) {
   // 如果 hash 表里面存在这个值
   if (this.valueMap.has(key)) {
@@ -27,11 +20,6 @@ LFUCache.prototype.get = function (key) {
   }
 }
 
-/**
- * @param {number} key
- * @param {number} value
- * @return {void}
- */
 LFUCache.prototype.put = function (key, value) {
   if (this.size === 0) {
     return
@@ -57,10 +45,3 @@ LFUCache.prototype.put = function (key, value) {
     this.valueMap.delete(delKey)
   }
 }
-
-/**
- * Your LFUCache object will be instantiated and called as such:
- * var obj = new LFUCache(capacity)
- * var param_1 = obj.get(key)
- * obj.put(key,value)
- */

@@ -24,7 +24,7 @@ person1.foo1.call(person2) // person2
 person1.foo2() // window
 person1.foo2.call(person2) // window
 
-person1.foo3()() // 
+person1.foo3()()
 person1.foo3.call(person2)()
 person1.foo3().call(person2)
 
