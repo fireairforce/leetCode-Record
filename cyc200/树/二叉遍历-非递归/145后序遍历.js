@@ -1,3 +1,5 @@
+
+// 后序其实也是利用一个栈
 var postorderTraversal = function(root) {
   if (!root) {
     return [];
