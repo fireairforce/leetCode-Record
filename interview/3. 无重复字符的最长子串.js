@@ -18,3 +18,5 @@ var lengthOfLongestSubstring = function (s) {
   }
   return res;
 };
+
+console.log(lengthOfLongestSubstring(['acccs', 'acaaa', 'ac']));
