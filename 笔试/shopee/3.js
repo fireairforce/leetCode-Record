@@ -23,7 +23,7 @@ const maxArea = (grid) => {
       if (a[nums[i][j]] === undefined) {
         a[nums[i][j]] = 1
       } else {
-        a[nums[i][j]] += 1;
+        a[nums[i][j]] += 1
       }
     }
   }
@@ -59,9 +59,9 @@ let lines = readline().split(' ')
 let n = parseInt(lines[0])
 let m = parseInt(lines[1])
 let input = []
-for (let i = 0;i<n;i++) {
-  lines = readline().split("")
-  for (let i = 0;i < lines.length;i++) {
+for (let i = 0; i < n; i++) {
+  lines = readline().split('')
+  for (let i = 0; i < lines.length; i++) {
     lines[i] = parseInt(lines[i])
   }
   input.push(lines)

@@ -20,4 +20,3 @@ for (var i = s.length; i >= 0; i--) {
   }
 }
 print(res.length)
-

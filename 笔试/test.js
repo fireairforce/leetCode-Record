@@ -1,4 +1,4 @@
-// vue 
+// vue
 Object.defineProperty(obj, {
   setXX: () => {
     obj.name = 'wd'
@@ -6,6 +6,5 @@ Object.defineProperty(obj, {
   },
   get: (xxx) => {
     return obk[xxx]
-  }
+  },
 })
-

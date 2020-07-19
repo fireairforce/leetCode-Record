@@ -15,7 +15,7 @@ rules = [
   ['seller/user-list/', 'rbac-service'],
   ['sls/', 'sls-backend'],
   ['sls/loc/', 'locale-center'],
-  ['smart/', 'smart-agent']
+  ['smart/', 'smart-agent'],
 ]
 
 testxx = ['smart/forecast/', 'sls/loc/create/', 'sls/location/import/']
