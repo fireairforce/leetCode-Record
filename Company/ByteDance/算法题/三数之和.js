@@ -2,32 +2,33 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-
-//  这个超时了，可能是lastIndexOf有一段的时间限制吧
-var threeSum = function(nums) {
-    if(nums.length<3){
-        return [];
+var threeSum = function (nums) {
+  nums = nums.sort((a, b) => a - b)
+  if (nums.length <= 2) {
+    return []
+  }
+  let res = []
+  let len = nums.length
+  for (let i = 0; i < len - 2; i++) {
+    if (i >= 1 && nums[i] === nums[i - 1]) {
+      continue
     }
-  const result = [];
-  for (let i = 0; i < nums.length - 1; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      let temp = nums[i] + nums[j];
-      if (nums.lastIndexOf(-temp) > j) {
-        result.push([nums[i], nums[j], nums[nums.indexOf(-temp)]]);
+    let left = i + 1
+    let right = len - 1
+    while (left < right) {
+      let sum = nums[i] + nums[left] + nums[right]
+      if (sum === 0) {
+        res.push([nums[i], nums[left], nums[right]])
+        left++
+        while (nums[left] === nums[left - 1]) {
+          left++
+        }
+      } else if (sum < 0) {
+        left++
+      } else if (sum > 0) {
+        right--
       }
     }
   }
-  let a = {};
-  for (let i = 0; i < result.length; i++) {
-      let item = result[i].sort().toString();
-      a[item] = 1;
-  }
-  let res = [];
-  for(let q in a) {
-      res.push(q.split(','));
-  }
-  return res;
-};
-
-
-// console.log(threeSum([1,2,-2,-1]));
+  return res
+}
