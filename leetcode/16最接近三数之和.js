@@ -4,26 +4,26 @@
  * @return {number}
  */
 // n的三次方写法
-var threeSumClosest_ON3 = function(nums, target) {
+var threeSumClosest_ON3 = function (nums, target) {
   if (nums.length <= 2) {
-    return;
+    return
   }
-  let res;
-  let sum = nums[0] + nums[1] + nums[2];
-  let count = target - sum;
+  let res
+  let sum = nums[0] + nums[1] + nums[2]
+  let count = target - sum
   for (let i = 0; i < nums.length; i++) {
     for (let j = i + 1; j < nums.length; j++) {
       for (let k = j + 1; k < nums.length; k++) {
-        res = target - (nums[i] + nums[j] + nums[k]);
+        res = target - (nums[i] + nums[j] + nums[k])
         if (Math.abs(res) <= Math.abs(count)) {
-          count = res;
-          sum = nums[i] + nums[j] + nums[k];
+          count = res
+          sum = nums[i] + nums[j] + nums[k]
         }
       }
     }
   }
-  return sum;
-};
+  return sum
+}
 
 // 使用双指针优化
 /**
@@ -31,29 +31,29 @@ var threeSumClosest_ON3 = function(nums, target) {
  * @param {number} target
  * @return {number}
  */
-// 二分找
-var threeSumClosest = function(nums, target) {
+// 双指针
+var threeSumClosest = function (nums, target) {
   if (nums.length <= 2) {
-    return;
+    return
   }
-  nums.sort((a, b) => a - b);
-  let closeNum = nums[0] + nums[1] + nums[2];
+  nums.sort((a, b) => a - b)
+  let closeNum = nums[0] + nums[1] + nums[2]
   for (let i = 0; i < nums.length - 2; i++) {
     let l = i + 1,
-      r = nums.length - 1;
+      r = nums.length - 1
     while (l < r) {
-      let sum = nums[l] + nums[r] + nums[i];
+      let sum = nums[l] + nums[r] + nums[i]
       if (Math.abs(sum - target) < Math.abs(closeNum - target)) {
-        closeNum = sum;
+        closeNum = sum
       }
       if (sum > target) {
-        r--;
+        r--
       } else if (sum < target) {
-        l++;
+        l++
       } else {
-        return target;
+        return target
       }
     }
   }
-  return closeNum;
-};
+  return closeNum
+}
