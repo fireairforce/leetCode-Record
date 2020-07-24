@@ -29,3 +29,12 @@ function curry(fn, ...arg) {
 // const add1 = curry(sum);
 // console.log(add1(1, 2, 3, 4, 5));
 // console.log(add1(1)(2)(3)(4)(5));
+
+
+const curry = (fn, ...arg) => {
+  if (fn.length <= arg.length) {
+    fn(...arg)
+  } else {
+    (...arg2) => curry(fn, ...arg, ...arg2)
+  }
+}
