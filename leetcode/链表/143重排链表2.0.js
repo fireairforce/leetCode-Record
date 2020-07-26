@@ -20,7 +20,7 @@ var reorderList = function(head) {
     slow = slow.next;
     fast = fast.next.next;
   }
-//   后面的节点进行一个反转
+  //   后面的节点进行一个反转
   let cur = slow.next;
   slow.next = null;
   slow = reverseList(cur);
