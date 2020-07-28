@@ -33,19 +33,3 @@ Function.prototype.Myapply = function(context = window, args) {
   delete context.fn;
   return result;
 };
-
-Function.prototype.MyApply = function(context, arg) {
-  if (typeof this !== "function") {
-    throw new TypeError(`not function`);
-  }
-  let fn = new Symbol();
-  context[fn] = this;
-  let result;
-  if (Array.isArray(arg)) {
-    result = context[fn](...arg);
-  } else {
-    result = context[fn]();
-  }
-  delete context.fn;
-  return result;
-};
