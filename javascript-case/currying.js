@@ -9,14 +9,6 @@
 //   return a + b + c;
 // };
 
-function curry(fn, ...arg) {
-  if (arg.length >= fn.length) {
-    return fn(...arg);
-  } else {
-    return (...args2) => curry(fn, ...arg, ...args2);
-  }
-}
-
 // function sum(...args) {
 //   let res = 0;
 //   for (let i = 0; i < args.length; i++) {
@@ -38,3 +30,5 @@ const curry = (fn, ...arg) => {
     (...arg2) => curry(fn, ...arg, ...arg2)
   }
 }
+
+console.log(Number.MAX_VALUE);
