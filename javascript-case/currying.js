@@ -17,18 +17,20 @@
 //   return res;
 // }
 
-
 // const add1 = curry(sum);
 // console.log(add1(1, 2, 3, 4, 5));
 // console.log(add1(1)(2)(3)(4)(5));
-
 
 const curry = (fn, ...arg) => {
   if (fn.length <= arg.length) {
     fn(...arg)
   } else {
-    (...arg2) => curry(fn, ...arg, ...arg2)
+    ;(...arg2) => curry(fn, ...arg, ...arg2)
   }
 }
 
-console.log(Number.MAX_VALUE);
+const curry = (fn, ...arg) => {
+  if (fn.length <= arg.length) {
+    fn(...arg)
+  } else (...arg2) => curry(fn, ...arg, ...arg2)
+}
