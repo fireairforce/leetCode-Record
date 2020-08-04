@@ -9,10 +9,25 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var countNodes = function(root) {
-    if(!root) {
-        return 0;
+var countNodes = function (root) {
+  if (!root) {
+    return 0
+  }
+  return countNodes(root.left) + countNodes(root.right) + 1
+}
+
+const solve = (root) => {
+  const calculate = (node) => {
+    let depth = 0
+    while (node.left) {
+      node = node.left
+      depth++
     }
-    return countNodes(root.left) + countNodes(root.right) + 1;
- };
- 
+    return depth
+  }
+  let d = calculate(root)
+  const exists = (idx, depth, node) => {
+    
+  }
+
+}
