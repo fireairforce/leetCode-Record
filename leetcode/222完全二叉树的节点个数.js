@@ -15,19 +15,3 @@ var countNodes = function (root) {
   }
   return countNodes(root.left) + countNodes(root.right) + 1
 }
-
-const solve = (root) => {
-  const calculate = (node) => {
-    let depth = 0
-    while (node.left) {
-      node = node.left
-      depth++
-    }
-    return depth
-  }
-  let d = calculate(root)
-  const exists = (idx, depth, node) => {
-    
-  }
-
-}
