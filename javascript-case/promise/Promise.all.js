@@ -4,7 +4,7 @@
  * 任何情况下，Promise.all返回的 promsie 完成状态是个数组
  */
 
-Promise.all = (promises) => {
+const PromiseAll = (promises) => {
   return new Promise((resolve, reject) => {
     let result = []
     let index = 0
@@ -30,3 +30,16 @@ Promise.all = (promises) => {
     }
   })
 }
+
+const sleep = (time) =>
+  new Promise((resolve) => setTimeout(() => resolve(5), time))
+
+let promise1 = new Promise((resove) => resove(1))
+let promise2 = new Promise((resove) => resove(2))
+let promise3 = new Promise((resove) => resove(3))
+let promise4 = new Promise((resove) => resove(4))
+let arr = [sleep(500), promise1, promise2, promise3, promise4]
+
+PromiseAll(arr).then(res => {
+  console.log(res);
+})
