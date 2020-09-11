@@ -60,20 +60,42 @@
 // }
 
 
-var a = 1;  
-function b() {  
-    a = 10;  
-    return;  
-    function a() {console.log('function')}  
-}  
-b();  
-console.log(a);
+// var a = 1;  
+// function b() {  
+//     a = 10;  
+//     return;  
+//     function a() {console.log('function')}  
+// }  
+// b();  
+// console.log(a);
 
-var a = 1;
-function b(){
-    a = 10;
-    return;
-}
-b();
-console.log(a);
+// var a = 1;
+// function b(){
+//     a = 10;
+//     return;
+// }
+// b();
+// console.log(a);
 
+
+// function Page () {
+//     return this.hosts;
+// }
+
+// Page.hosts = ['p1']
+// Page.prototype.hosts = ['p1']
+
+// const p1 = new Page()
+// const p2 = Page();
+// console.log(p1.hosts);
+// console.log(p2.hosts);
+
+var a = 20;
+
+(function() {
+  console.log(name);
+  console.log(a);
+
+  var name = 'wd'
+  let a = 2;
+}())
