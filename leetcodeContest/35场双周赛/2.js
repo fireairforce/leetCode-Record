@@ -1,38 +1,23 @@
-var maxSumRangeQuery = function(nums, requests) {
-  const mod = 1e9 + 7;
-  let c = Array(100005).fill(0)
-  let left = Array(100005).fill(0)
-  let right = Array(100005).fill(0)
-  nums = nums.sort((a, b) => a - b)
-  let m = 0;
-  let count = 0;
+var maxSumRangeQuery = function (nums, requests) {
+  let len = nums.length
+  let f = Array(len + 1).fill(0)
   for (let item of requests) {
-    left[item[0]] ++
-    right[item[1]] ++
-    m = Math.max(m, item[1])
+    f[item[0]]++
+    f[item[1] + 1]--
   }
-  for (let i = 0;i<=m;i++) {
-    if (left[i]) {
-      count += left[i]
-    }
-    c[i] += count
-    if (right[i]) {
-      count -= right[i]
-    }
+  for (let i = 1; i <= len; i++) {
+    f[i] += f[i - 1]
   }
-  c = c.sort((a, b) => b - a)
+  f.sort((a, b) => b - a)
+  nums.sort((a, b) => b - a)
+  
   let sum = 0;
-  let len = nums.length - 1;
-  for (let i = 0;i<=m;i++) {
-    if (c[i] === 0) {
-      break;
-    } 
-    sum += (c[i] * nums[len] % mod) % mod
-    len--;
+  const mod = 1e9 + 7;
+  for (let i = 0;i<len;i++) {
+    sum += (f[i] * nums[i] % mod) % mod;
   }
   return sum % mod;
-};
-
+}
 
 // console.log(maxSumRangeQuery([1,8,5,5,2],
 //   [[4,4],[3,4],[4,4],[2,4],[0,0]]));
