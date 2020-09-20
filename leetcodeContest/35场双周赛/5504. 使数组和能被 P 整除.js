@@ -4,5 +4,5 @@
  * @return {number}
  */
 var minSubarray = function(nums, p) {
-
+  
 };
