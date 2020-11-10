@@ -3,34 +3,36 @@
  * @param {number} k
  * @return {number}
  */
-var findKthLargest = function (nums, k) {
-  k = nums.length - k;
-  let l = 0,
-    h = nums.length - 1;
-  while (l < h) {
-    let j = partition(nums, l, h);
-    if (j === k) {
-      break;
-    } else if (j < k) {
-      l = j + 1;
-    } else {
-      h = j - 1;
-    }
-  }
-};
 
-// 返回一个index
-const partition = (a, l, h) => {
-  let i = l,
-    j = h + 1;
-  while (true) {
-    while (a[++i] < a[l] && i < h);
-    while (a[--j] > a[l] && j > l);
-    if (i >= j) {
-      break;
-    }
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  [a[l], a[j]] = [a[j], a[l]];
-  return j;
+var findKthLargest = function (nums, k) {
+  k = nums.length - k
+  let l = 0,
+    r = nums.length - 1
+  quickSort(nums, l, r, k)
+  console.log('quickSort(nums, l, r, k): ', quickSort(nums, l, r, k))
 }
+
+const quickSort = (nums, left, right, index) => {
+  if (left >= right) {
+    return nums[right]
+  }
+  let x = nums[Math.floor((left + right) >> 1)],
+    i = left - 1,
+    j = right + 1
+  while (i < j) {
+    while (nums[++i] < x);
+    while (nums[--j] > x);
+    if (i < j) {
+      ;[nums[i], nums[j]] = [nums[j], nums[i]]
+    }
+  }
+  let s1 = j - left + 1
+  if (index <= s1) {
+    quickSort(nums, left, j, index)
+  } else {
+    quickSort(nums, j + 1, right, index - s1)
+  }
+}
+
+// console.log(findKthLargest([1, 2, 3, 4], 1));
+// console.log(findKthLargest());
