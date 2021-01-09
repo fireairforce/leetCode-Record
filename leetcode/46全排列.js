@@ -13,6 +13,7 @@ const dfs = (list, tempList, nums) => {
   if (tempList.length === nums.length) {
     return list.push([...tempList]);
   }
+  // 枚举一下能够用来填充的数值
   for (let i = 0; i < nums.length; i++) {
     if (tempList.includes(nums[i])) {
         // 如果tempList里面已经包含了这个元素
