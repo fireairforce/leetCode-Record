@@ -1,30 +1,102 @@
 #include<iostream>
+#include<iostream>
 #include<cstring>
 #include<cmath>
 
 using namespace std;
-const int mod = 998244353;
+const int N = 310;
+int h[N], w[N],e[N], ne[N], idx;
+int dist[N];
+int st[N];
+int n,m;
+int b[N];
 
-long long f(int n, int m) {
-  if (n == 0) {
-    return 1;
+void add (int a, int b, int c) {
+  e[idx] = b, ne[idx] = h[a], w[idx] = c, h[a] = idx++;
+}
+
+// 判断是否可以通路
+bool judge() {
+  for (int i = 0; i<=n;i++) {
+    if (st[i] == 0) {
+      return false;
+    }
   }
-  if (m == 0 && n == 1) {
-    return 2;
-  }
-  if (m == 0) {
-    return n + 2;
-  }
-  return f(f(n-1, m), m - 1);
+  return true;
 }
 
 int main () {
-  int t;
-  cin >> t;
-  while (t --) {
-    int n, m;
-    cin >> n >> m;
-    cout << f(n, m) << endl;
+  memset(h, -1, sizeof h);
+  int ans = 0x3f3f3f3f;
+  cin >> n >> m;
+  while (m --) {
+    int a, b, c;
+    cin >> a >> b >> c;
+    add(a, b, c);
+    add(b ,a ,c);
+  }
+  int k;
+  cin >> k;
+  while (k --) {
+    int x;
+    cin >> x;
+    memset(st, 0, sizeof st);
+    memset(b, 0, sizeof b);
+    for (int i = 0; i < x; i++) {
+      cin >> b[i];
+    }
+    int sum = 0;
+    for (int i = 0; i <= x; i ++) {
+      int prefix;
+      if (i == 0) {
+        prefix = 0;
+        st[0] = 1;
+        // 遍历一下起点可以达到的地方
+        for (int j = h[0]; j != -1; j = ne[j]) {
+          int k = e[j];
+          if (k == b[i]) {
+            sum += w[j];
+            st[k] = 1;
+            break;
+          }
+        }
+      } else if (i < x) {
+        prefix = b[i-1];
+        st[prefix] = 1;
+        for (int j = h[prefix];j!=-1;j=ne[j]) {
+          int k = e[j];
+          if (k == b[i]) {
+            sum += w[j];
+            st[k] = 1;
+            break;
+          }
+        }
+      } else if (i == x) {
+        prefix = b[i-1];
+        st[prefix] = 1;
+        for (int j = h[prefix];j!=-1;j=ne[j]) {
+          int k = e[j];
+          if (k == 0) {
+            sum += w[j];
+            st[k] = 1;
+            break;
+          }
+        }
+      }
+    }
+    bool isValid = judge();
+    if (!isValid) {
+      sum = -1;
+    }
+    cout << sum << endl;
+    if (sum != -1) {
+      ans = min(sum, ans);
+    }
+  }
+  if (ans == 0x3f3f3f3f) {
+    cout << -1 << endl;
+  } else {
+    cout << ans << endl;
   }
   return 0;
 }
