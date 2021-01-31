@@ -5,7 +5,7 @@
 
 using namespace std;
 const int N = 1000;
-const int INF = 0x3f;
+const int INF = 0x3f3f3f3f;
 int g[N][N];
 int st[N];
 int n,m;
