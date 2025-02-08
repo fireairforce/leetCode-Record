@@ -5,57 +5,35 @@
 
 //  一看就是个dfs
 var maxAreaOfIsland = function(grid) {
-  const rows = grid.length;
-  if (rows === 0) {
-    return 0;
-  }
-  const cols = grid[0].length;
-  let k = 2;
-  let nums = new Array();
-  for (let i = 0; i < rows; i++) {
-    nums[i] = new Array();
-    for (let j = 0; j < cols; j++) {
-      nums[i][j] = 0;
+  let ans = 0;
+  let m = grid.length;
+  let n = grid[0].length;
+  for (let i = 0; i < m; i ++) {
+    for (let j = 0; j < n; j ++) {
+      ans = Math.max(ans, dfs(grid, i, j));
     }
   }
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      if (grid[i][j] === 1) {
-        dfs(grid, i, j, rows, cols, k++, nums);
-      }
-    }
-  }
-  let a = {};
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      if(!a[nums[i][j]]){
-        a[nums[i][j]] = 0;
-      } else {
-        a[nums[i][j]] ++;
-      }
-    }
-  }
-  let len = 0;
-  for (let i in a) {
-    if (len < a[i] && i !== "0") {
-      len = a[i];
-    }
-  }
-  return len;
+  return ans;
 };
 
-let dfs = (grid, i, j, rows, cols, k, nums) => {
-  // 碰到边界条件
-  if (i < 0 || i > rows - 1 || j < 0 || j > cols - 1 || grid[i][j] === 0) {
-    return;
-  }
+
+const dfs = (grid, i, j) => {
+  if (i < 0 || j < 0 || i > grid.length - 1 || j > grid[0].length - 1 || grid[i][j] == 0) {
+    return 0;
+  } 
   grid[i][j] = 0;
-  nums[i][j] = k;
-  dfs(grid, i + 1, j, rows, cols, k, nums);
-  dfs(grid, i - 1, j, rows, cols, k, nums);
-  dfs(grid, i, j + 1, rows, cols, k, nums);
-  dfs(grid, i, j - 1, rows, cols, k, nums);
-};
+  let ans = 1;
+  let dx = [0, 0, 1, -1];
+  let dy = [1, -1, 0, 0];
+  for (let k = 0; k < 4; ++k) {
+    let x = i + dx[k];
+    let y = j + dy[k];
+    ans += dfs(grid, x, y);
+  }
+
+  return ans;
+}
+
 
 console.log(
   maxAreaOfIsland([
