@@ -25,4 +25,4 @@ const promiseAllLimit = (promises, limit) => {
          next();
     });
 }
-const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(5), time));
+const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(''), time));
