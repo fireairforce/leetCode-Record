@@ -17,3 +17,22 @@ var longestCommonPrefix = function(strs) {
   }
   return res;
 };
+
+
+const promiseAll = (promises) => {
+  return new Promise((resolve, reject) => {
+    let count = 0;
+    let res = [];
+
+    for (let i = 0; i< promises.length; i++) {
+      Promise.resolve(promises[i]).then((data) => {
+        res.push(data);
+        count ++;
+
+        if (count === promises.length) {
+          resolve(res);
+        }
+      }).catch(reject)
+    }
+  })
+}
